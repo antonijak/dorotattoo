@@ -86,10 +86,14 @@ export default {
     align-items: flex-end;
     width: 100%;
     border: none;
-    padding: 2rem 2rem 2.5rem;
+    padding: 1rem 1rem 1.5rem;
     border-radius: 3px;
     margin-bottom: 3rem;
     background-color: #364523;
+
+     @media (min-width: 1200px) {
+      padding: 2rem 2rem 2.5rem;
+    }
 
     .subtitle {
       color: $light-text;

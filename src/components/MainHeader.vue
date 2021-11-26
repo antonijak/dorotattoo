@@ -4,7 +4,16 @@
       <h1 class="link__title">Doro tattoo</h1>
     </router-link>
 
-    <nav v-if="$route.path === '/'" class="navigation">
+    <button class="menu-icon" @click="navVisible = true">
+      <i class="fas fa-bars"></i>
+    </button>
+
+    <nav
+      v-if="$route.path === '/'"
+      class="navigation"
+      :class="{ visible: navVisible }"
+      @click="navVisible = false"
+    >
       <a href="#" v-scroll-to="'#form'" class="link">
         <h2 class="link__title">I want a tattoo</h2>
       </a>
@@ -45,6 +54,7 @@ export default {
   data() {
     return {
       breadcrumbs: [],
+      navVisible: false,
     };
   },
   mounted() {
@@ -65,12 +75,12 @@ export default {
   justify-content: space-between;
   align-items: center;
   font-family: "Nunito", sans-serif;
-  position: fixed;
   top: 0;
   left: 0;
   background-color: rgba(0, 0, 0, 0.166);
   width: 100%;
   z-index: 1;
+  position: fixed;
 
   .link {
     text-decoration: none;
@@ -89,12 +99,48 @@ export default {
     }
   }
 
+  .menu-icon {
+    background-color: transparent;
+    border: none;
+    padding: 0;
+    color: $light-text;
+    font-size: 1.5rem;
+
+    @media (min-width: 1200px) {
+      display: none;
+    }
+  }
+
   .navigation {
     display: flex;
     align-items: center;
+    visibility: hidden;
+    position: absolute;
+    top: 3.5rem;
+    right: 0;
+    z-index: 2;
+    flex-direction: column;
+
+    @media (min-width: 1200px) {
+      visibility: visible;
+      position: static;
+      flex-direction: row;
+    }
+
+    &.visible {
+      visibility: visible;
+    }
 
     .link {
-      margin-right: 1.5rem;
+      padding: 1rem;
+      background-color: $main-background;
+      width: 15rem;
+
+      @media (min-width: 1200px) {
+        padding: 0;
+        background-color: transparent;
+        margin-right: 1.5rem;
+      }
 
       &:last-child {
         margin-right: 0;

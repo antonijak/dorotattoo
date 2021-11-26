@@ -26,11 +26,14 @@ CForm;
 
 <style scoped lang="scss">
 .home {
-
   &__section {
     width: 100%;
     min-height: 100vh;
-    padding: 6rem;
+    padding: 3.5rem .5rem;
+
+    @media (min-width: 1200px) {
+      padding: 6rem;
+    }
 
     &.image {
       position: relative;

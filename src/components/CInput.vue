@@ -43,7 +43,7 @@ export default {
       default: false,
     },
     infoText: String,
-    required:  {
+    required: {
       type: Boolean,
       default: false,
     },
@@ -78,8 +78,11 @@ export default {
   width: 100%;
   position: relative;
   margin-bottom: 1.5rem;
-  padding-top: 1.5rem;
+  padding-top: 2.5rem;
 
+  @media (min-width: 1200px) {
+    padding-top: 1.5rem;
+  }
 
   &__label {
     width: 100%;
@@ -87,20 +90,37 @@ export default {
     justify-content: space-between;
     align-items: center;
     position: absolute;
-    top: 1.4rem;
+    top: 1.5rem;
+    left: 0.5rem;
     font-size: 1rem;
     color: $primary-text;
     cursor: text;
-    padding: 1.25rem;
+    padding: 1.25rem 0;
     transition: all 0.2s linear;
     color: $light-text-secondary;
+    text-align: left;
+    font-size: 0.8rem;
+    letter-spacing: 0.5px;
+
+    @media (min-width: 1200px) {
+      padding: 0;
+      top: 2.75rem;
+      left: 1rem;
+      font-size: 1rem;
+      letter-spacing: 0;
+    }
 
     &.focused {
       padding: 0;
-      padding-left: 0.25rem;
       font-size: 0.8rem;
       top: 0;
       letter-spacing: 0.5px;
+      left: 0;
+
+      @media (min-width: 1200px) {
+        padding-left: 0.25rem;
+         left: 0.5rem;
+      }
     }
 
     .icon {
@@ -117,11 +137,11 @@ export default {
     border-radius: 3px;
     font-size: 1rem;
     color: $light-text;
-     border: 1px solid $input-background;
+    border: 1px solid $input-background;
 
-     &.focused {
-        background-color: $input-background-focused;
-     }
+    &.focused {
+      background-color: $input-background-focused;
+    }
 
     &:hover {
       background-color: $input-background-focused;

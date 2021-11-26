@@ -42,7 +42,7 @@ export default {
     color: $light-text-secondary;
     width: 100%;
     text-align: left;
-    margin-bottom: 1rem;
+    margin-bottom: 1.25rem;
   }
 
   &__field {
