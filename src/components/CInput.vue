@@ -1,6 +1,11 @@
 <template>
   <div class="c-input">
-    <label :for="inputId" class="c-input__label" :class="{focused: focused || $isTrue(userInput)}" @click.stop="focusInput">
+    <label
+      :for="inputId"
+      class="c-input__label"
+      :class="{ focused: focused || $isTrue(userInput) }"
+      @click.stop="focusInput"
+    >
       <span>{{ label }}</span>
       <i class="fas fa-info-circle icon" @click.stop="showTooltip"></i>
     </label>
@@ -24,7 +29,7 @@ export default {
     label: String,
     inputType: {
       type: String,
-      default: 'text',
+      default: "text",
     },
     focusOnMount: {
       type: Boolean,
@@ -47,9 +52,9 @@ export default {
     focusInput() {
       this.focused = true;
     },
-    blurInput(){
+    blurInput() {
       this.focused = false;
-    }
+    },
   },
 };
 </script>
@@ -73,12 +78,12 @@ export default {
     color: $primary-text;
     cursor: text;
     padding: 1rem 0;
-    transition: all .2s linear;
+    transition: all 0.2s linear;
 
     &.focused {
       padding: 0;
-      font-size: .7rem;
-      color: $secondary-text;         
+      font-size: 0.7rem;
+      color: $secondary-text;
     }
 
     .icon {

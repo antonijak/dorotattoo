@@ -1,5 +1,9 @@
 <template>
-  <button class="c-button" :class="variant">
+  <button
+    class="c-button"
+    :class="variant"
+    @click.stop.prevent="$emit('click')"
+  >
     <!-- @slot icon -->
     <slot></slot>
     <span class="text">{{ text }}</span>
@@ -28,10 +32,11 @@ export default {
   color: $primary-text;
   border-radius: 15px;
   min-width: 7rem;
+  cursor: pointer;
+  text-transform: uppercase;
 
   .text {
-    text-transform: uppercase;
-    letter-spacing: .5px;
+    letter-spacing: 0.5px;
   }
 
   &.primary {

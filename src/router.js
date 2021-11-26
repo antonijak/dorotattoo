@@ -10,12 +10,21 @@ const routes = [
     path: "/",
     name: "Home",
     component: Home,
+    meta: {
+      requiresAuth: false,
+      // will be used when more pages are added
+      breadcrumbs: [{ name: "Home", link: "/" }],
+    },
   },
   {
     path: "*",
     name: "NotFound",
     component: NotFound,
+    meta: {
+      requiresAuth: false,
+    },
   },
+  // more pages later
 ];
 
 const router = new VueRouter({

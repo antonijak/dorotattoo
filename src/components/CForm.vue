@@ -2,7 +2,7 @@
   <form class="c-form">
     <c-input inputType="text" inputId="name" label="Name" />
 
-    <c-button type="submit" text="Submit" variant="primary"/>
+    <c-button type="submit" text="Submit" variant="primary" />
   </form>
 </template>
 
