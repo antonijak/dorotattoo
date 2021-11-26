@@ -1,14 +1,18 @@
 /* BORDERS */
-$input-border: rgb(21, 21, 21);
+$input-border: rgba(255, 255, 255, 0.495);
 
 /* TEXT */
-$primary-text: rgb(29, 29, 29);
+$primary-text: #31411f;
 $secondary-text: gray;
+$light-text: rgb(220, 220, 220);
+$light-text-secondary: rgb(186, 186, 186);
 
 /* BACKGROUND */
-$button-primary: rgb(33, 100, 33);
+$button-primary: rgba(255, 255, 255, 0.735);
 $button-secondary: rgb(229, 231, 235);
 $main-background:  #31411f;
+$input-background: #3c4b29;
+$input-background-focused: #435230;
 
 /* COLORS */
 $primary: green;

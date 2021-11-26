@@ -30,7 +30,7 @@ CForm;
   &__section {
     width: 100%;
     min-height: 100vh;
-    padding: 3rem;
+    padding: 6rem;
 
     &.image {
       position: relative;

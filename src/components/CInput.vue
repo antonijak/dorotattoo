@@ -1,15 +1,21 @@
 <template>
   <div class="c-input">
+    <!---------------------- L A B E L ---------------------->
     <label
       :for="inputId"
       class="c-input__label"
       :class="{ focused: focused || $isTrue(userInput) }"
       @click.stop="focusInput"
     >
-      <span>{{ label }}</span>
-      <i class="fas fa-info-circle icon" @click.stop="showTooltip"></i>
+      <span>{{ label }}<span v-if="required">*</span></span>
+      <i
+        v-if="infoText"
+        class="fas fa-info-circle icon"
+        @click.stop="showTooltip"
+      ></i>
     </label>
 
+    <!---------------------- I N P U T ---------------------->
     <input
       :id="inputId"
       v-model="userInput"
@@ -17,6 +23,7 @@
       :type="inputType"
       @blur="blurInput"
       @focus="focusInput"
+      :class="{ focused: focused || $isTrue(userInput) }"
     />
   </div>
 </template>
@@ -32,6 +39,11 @@ export default {
       default: "text",
     },
     focusOnMount: {
+      type: Boolean,
+      default: false,
+    },
+    infoText: String,
+    required:  {
       type: Boolean,
       default: false,
     },
@@ -66,6 +78,8 @@ export default {
   width: 100%;
   position: relative;
   margin-bottom: 1.5rem;
+  padding-top: 1.5rem;
+
 
   &__label {
     width: 100%;
@@ -73,17 +87,20 @@ export default {
     justify-content: space-between;
     align-items: center;
     position: absolute;
-    top: 0;
+    top: 1.4rem;
     font-size: 1rem;
     color: $primary-text;
     cursor: text;
-    padding: 1rem 0;
+    padding: 1.25rem;
     transition: all 0.2s linear;
+    color: $light-text-secondary;
 
     &.focused {
       padding: 0;
-      font-size: 0.7rem;
-      color: $secondary-text;
+      padding-left: 0.25rem;
+      font-size: 0.8rem;
+      top: 0;
+      letter-spacing: 0.5px;
     }
 
     .icon {
@@ -94,10 +111,21 @@ export default {
   &__input {
     width: 100%;
     border: none;
-    border-bottom: 1px solid $input-border;
-    padding: 1rem;
-    background-color: transparent;
+    background-color: $input-background;
+    padding: 1.25rem;
     outline: none;
+    border-radius: 3px;
+    font-size: 1rem;
+    color: $light-text;
+     border: 1px solid $input-background;
+
+     &.focused {
+        background-color: $input-background-focused;
+     }
+
+    &:hover {
+      background-color: $input-background-focused;
+    }
   }
 }
 </style>

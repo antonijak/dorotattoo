@@ -26,21 +26,32 @@ export default {
 
 <style lang="scss" scoped>
 .c-button {
-  padding: 0.5rem 1rem;
-  border: none;
-  background: $button-secondary;
-  color: $primary-text;
-  border-radius: 15px;
-  min-width: 7rem;
+  padding: 0.75rem 1rem;
+  border: 1px solid $button-secondary;
+  background: transparent;
+  color: $button-secondary;
+  border-radius: 25px;
+  min-width: 9rem;
   cursor: pointer;
   text-transform: uppercase;
+  font-size: .9rem;
+  font-weight: 600;
+transition: all .2s linear;
+
 
   .text {
-    letter-spacing: 0.5px;
+    letter-spacing: 1px;
   }
 
   &.primary {
     background-color: $button-primary;
+    color: $primary-text;
+  }
+
+    &:hover {
+    background-color: white;
+    color: $primary-text;
+    transform: scale(1.05);
   }
 }
 </style>

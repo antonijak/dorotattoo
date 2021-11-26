@@ -22,32 +22,27 @@ export default {
 @import url("https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600;700&family=Rubik:ital,wght@0,300;0,400;0,600;1,700&display=swap");
 @font-face {
   font-family: "Open Sans";
-  src: url("/assets/OpenSans/OpenSans-Regular.ttf");
-  font-weight: regular;
+  src: url("/OpenSans/OpenSans-Regular.ttf") format("truetype");
 }
 
 @font-face {
   font-family: "Open Sans";
-  src: url("/assets/OpenSans/OpenSans-SemiBold.ttf");
+  src: url("/OpenSans/OpenSans-SemiBold.ttf") format("truetype");
   font-weight: 600;
 }
 
 @font-face {
   font-family: "Open Sans";
-  src: url("/assets/OpenSans/OpenSans-Bold.ttf");
+  src: url("/OpenSans/OpenSans-Bold.ttf") format("ttf");
   font-weight: bold;
 }
 
-@font-face {
-  font-family: "Nunito";
-  src: url("/assets/Nunito/Nunito-SemiBold.ttf");
-  font-weight: 600;
-}
 
 * {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
+    font-family: "Open Sans", Arial, sans-serif;
 }
 
 #app {
