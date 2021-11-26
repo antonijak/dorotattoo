@@ -5,6 +5,16 @@ import store from "./store";
 
 Vue.config.productionTip = false;
 
+Vue.prototype.$isTrue = (value) => {
+  return !(
+    value === null ||
+    value === undefined ||
+    value === "" ||
+    value === false
+  );
+};
+
+
 new Vue({
   router,
   store,
