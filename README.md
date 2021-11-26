@@ -1,6 +1,6 @@
 # dorotattoo
 
-preview[https://dorotattoo.netlify.app/#/]
+[preview](https://dorotattoo.netlify.app/#/)
 
 ## Project setup
 ```
