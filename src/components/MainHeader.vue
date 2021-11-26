@@ -140,6 +140,7 @@ export default {
         padding: 0;
         background-color: transparent;
         margin-right: 1.5rem;
+        width: fit-content;
       }
 
       &:last-child {
