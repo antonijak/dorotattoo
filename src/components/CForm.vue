@@ -87,7 +87,12 @@
 
       <input type="hidden" name="form-name" value="contact" />
 
-      <c-button type="submit" text="Send" variant="primary" />
+      <c-button
+        type="submit"
+        text="Send"
+        variant="primary"
+        @click="handleSubmit"
+      />
     </fieldset>
   </form>
 </template>
@@ -143,7 +148,7 @@ export default {
           this.$emit("submitted", "success");
         })
         .catch(() => {
-          this.$emit("submitted","fail");
+          this.$emit("submitted", "fail");
         });
     },
   },

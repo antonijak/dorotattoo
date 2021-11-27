@@ -26,7 +26,7 @@ export default {
   },
   data() {
     return {
-      alertMessage: "wdww",
+      alertMessage: "",
       alertMode: "",
     };
   },
