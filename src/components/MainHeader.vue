@@ -1,6 +1,6 @@
 <template>
   <header class="main-header">
-    <router-link to="/" class="link main">
+    <router-link to="/" class="link main" v-scroll-to="'#image'">
       <h1 class="link__title">Doro tattoo</h1>
     </router-link>
 

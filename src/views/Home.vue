@@ -1,7 +1,7 @@
 <template>
   <div class="home">
     <!---------------- M A I N   I M A G E ---------------->
-    <section class="home__section image">
+    <section class="home__section image" id="image">
       <img src="../assets/pexels-connor-danylenko-1414535.jpg" class="image" />
       <img src="../assets/symbol.svg" class="logo" />
     </section>
@@ -12,7 +12,10 @@
     </section>
 
     <!---------------- F A Q ---------------->
-    <section class="home__section" id="faq">FAQ</section>
+    <section class="home__section faq" id="faq">
+      <h3 class="section-title">FAQ</h3>
+      <p>...coming soon</p>
+    </section>
   </div>
 </template>
 
@@ -45,6 +48,7 @@ CForm;
     width: 100%;
     min-height: 100vh;
     padding: 3.5rem 0.5rem;
+    color: $light-text;
 
     @media (min-width: 1200px) {
       padding: 6rem;
@@ -82,6 +86,11 @@ CForm;
       height: 100%;
       object-fit: cover;
       object-position: bottom center;
+    }
+
+    &.faq {
+      background-color: $lighter-background;
+      color: $primary-text;
     }
   }
 }

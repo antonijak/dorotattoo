@@ -22,7 +22,7 @@ export default {
 .c-alert {
   height: 100vh;
   width: 100vw;
-  background-color: rgba(0, 0, 0, 0.208);
+  background-color: rgba(0, 0, 0, 0.482);
   position: fixed;
   z-index: 1;
   top: 0;
@@ -33,26 +33,26 @@ export default {
 
   &__content {
     background: white;
-    color: rgb(31, 31, 31);
+    color: $primary-text;
     position: relative;
-    min-height: 6rem;
+    min-height: 8rem;
     width: 95%;
     padding: 3rem;
-    border-radius: 3px;
+    border-radius: 15px;
     display: flex;
     justify-content: center;
     align-items: center;
 
     @media (min-width: 768px) {
-      min-height: 6rem;
+      min-height: 8rem;
       min-width: 30rem;
       width: unset;
     }
 
     .icon {
       position: absolute;
-      top: 1rem;
-      right: 1rem;
+      top: 1.5rem;
+      right: 1.5rem;
       cursor: pointer;
       color: gray;
 

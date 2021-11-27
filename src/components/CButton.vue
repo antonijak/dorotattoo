@@ -3,6 +3,7 @@
     class="c-button"
     :class="variant"
     @click.stop.prevent="$emit('click')"
+    :disabled="disabled"
   >
     <!-- @slot icon -->
     <slot></slot>
@@ -20,6 +21,10 @@ export default {
       default: "button",
     },
     variant: String,
+    disabled: {
+      type: Boolean,
+      default: false,
+    },
   },
 };
 </script>
@@ -49,13 +54,22 @@ export default {
 
   &.primary {
     background-color: $button-primary;
+    border-color: $button-primary;
     color: $primary-text;
   }
 
   &:hover {
-    background-color: white;
+      background-color: $button-primary-hover;
+    border-color: $button-primary-hover;
     color: $primary-text;
     transform: scale(1.05);
+  }
+
+  &:disabled {
+    transform: none;
+    background-color: rgb(191, 191, 191);
+    color: rgb(160, 160, 160);
+    border-color: rgb(191, 191, 191);
   }
 }
 </style>

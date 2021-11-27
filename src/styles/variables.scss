@@ -8,11 +8,12 @@ $light-text: rgb(220, 220, 220);
 $light-text-secondary: rgb(186, 186, 186);
 
 /* BACKGROUND */
-$button-primary: rgba(255, 255, 255, 0.735);
+$button-primary: rgb(245, 245, 245);
+$button-primary-hover: rgba(255, 255, 255, 0.735);
 $button-secondary: rgb(229, 231, 235);
 $main-background:  #31411f;
 $input-background: #3c4b29;
 $input-background-focused: #435230;
+$lighter-background: #899a69;
 
 /* COLORS */
-$primary: green;

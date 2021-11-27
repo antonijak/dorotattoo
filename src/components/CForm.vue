@@ -93,6 +93,7 @@
         text="Send"
         variant="primary"
         @click="handleSubmit"
+        :disabled="submitDisabled"
       />
     </fieldset>
   </form>
@@ -122,7 +123,7 @@ export default {
         country: "",
         other: "",
       },
-      submitCount: 0
+      submitCount: 0,
     };
   },
   methods: {
@@ -164,6 +165,17 @@ export default {
         .catch(() => {
           this.$emit("submitted", "fail");
         });
+    },
+  },
+  computed: {
+    submitDisabled() {
+      return (
+        this.form.previous === "" ||
+        this.form.size === "" ||
+        this.form.placement === "" ||
+        this.form.details === "" ||
+        this.form.name === ""
+      );
     },
   },
 };
