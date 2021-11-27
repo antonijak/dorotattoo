@@ -1,5 +1,7 @@
 # dorotattoo
 
+[preview](https://dorotattoo.netlify.app/#/)
+
 ## Project setup
 ```
 yarn install
