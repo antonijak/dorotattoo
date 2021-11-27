@@ -6,6 +6,7 @@
     mode="post"
     data-netlify-honeypot
     @submit.prevent="handleSubmit"
+    :key="submitCount"
   >
     <fieldset class="c-form__section">
       <h3 class="subtitle">So, you'd like a tattoo?</h3>
@@ -121,6 +122,7 @@ export default {
         country: "",
         other: "",
       },
+      submitCount: 0
     };
   },
   methods: {
@@ -132,6 +134,7 @@ export default {
         .join("&");
     },
     handleSubmit() {
+      // TODO add validation
       const axiosConfig = {
         header: { "Content-Type": "application/x-www-form-urlencoded" },
       };
@@ -156,6 +159,7 @@ export default {
             country: "",
             other: "",
           };
+          this.submitCount++;
         })
         .catch(() => {
           this.$emit("submitted", "fail");

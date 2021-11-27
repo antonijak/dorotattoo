@@ -4,10 +4,12 @@
       <h1 class="link__title">Doro tattoo</h1>
     </router-link>
 
+ <!-------------- O P E N   M O B I L E -------------->
     <button class="menu-icon" @click="navVisible = true">
       <i class="fas fa-bars"></i>
     </button>
 
+ <!-------------- N A V I G A T I O N -------------->
     <nav
       v-if="$route.path === '/'"
       class="navigation"
