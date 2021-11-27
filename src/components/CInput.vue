@@ -29,6 +29,7 @@
       class="c-input__input textarea"
       @blur="blurInput"
       @focus="focusInput"
+      :name="name"
     ></textarea>
 
     <!---------------------- I N P U T ---------------------->
@@ -43,6 +44,7 @@
       :class="{ focused: focused || $isTrue(userInput) }"
       :maxlength="maxLength"
       :required="required"
+      :name="name"
     />
   </div>
 </template>
@@ -52,6 +54,7 @@ export default {
   name: "CInput",
   props: {
     inputId: String,
+    name: String,
     label: String,
     inputType: {
       type: String,
@@ -173,6 +176,7 @@ export default {
     font-size: 1rem;
     color: $light-text;
     border: 1px solid $input-background;
+    font-family: "Open Sans";
 
     &.textarea {
       height: 15rem;

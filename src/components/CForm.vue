@@ -1,21 +1,23 @@
 <template>
-  <form class="c-form" name="contact" netlify>
+  <form class="c-form" name="contact" netlify mode="post" data-netlify-honeypot>
     <fieldset class="c-form__section">
       <h3 class="subtitle">So, you'd like a tattoo?</h3>
 
       <c-checkbox
-      label="Do you already have a tattoo?"
+        label="Do you already have a tattoo?"
         type="radio"
         :fields="[
           { fieldId: 'yes', value: 'y', label: 'Yes' },
           { fieldId: 'no', value: 'n', label: 'No' },
         ]"
         inputId="previous"
+        name="previous"
       />
 
       <c-input
         inputType="text"
         inputId="size"
+        name="size"
         label="What is the approximate tattoo size you had in mind?  eg: 10x15cm"
         required
       />
@@ -23,6 +25,7 @@
       <c-input
         inputType="text"
         inputId="placement"
+        name="placement"
         label="What part of the body would you like to tattoo?"
         required
       />
@@ -30,6 +33,7 @@
       <c-input
         inputType="textarea"
         inputId="details"
+        name="details"
         label="Tell me something more about the tattoo you want"
         required
       />
@@ -41,17 +45,33 @@
       <c-input
         inputType="text"
         inputId="name"
+        name="name"
         label="What's your name? "
         required
       />
-      <c-input inputType="text" inputId="age" label="How old are you?" />
-      <c-input inputType="text" inputId="country" label="Where are you from?" />
+
+      <c-input
+        inputType="text"
+        inputId="age"
+        name="age"
+        label="How old are you?"
+      />
+
+      <c-input
+        inputType="text"
+        inputId="country"
+        name="country"
+        label="Where are you from?"
+      />
 
       <c-input
         inputType="textarea"
         inputId="other"
+        name="other"
         label="All done! :) Do you have something to add? Feel free to write some notes."
       />
+
+      <input type="hidden" name="form-name" value="contact" />
 
       <c-button type="submit" text="Send" variant="primary" />
     </fieldset>
@@ -91,7 +111,7 @@ export default {
     margin-bottom: 3rem;
     background-color: #364523;
 
-     @media (min-width: 1200px) {
+    @media (min-width: 1200px) {
       padding: 2rem 2rem 2.5rem;
     }
 
