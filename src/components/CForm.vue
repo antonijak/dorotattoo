@@ -146,6 +146,16 @@ export default {
         )
         .then(() => {
           this.$emit("submitted", "success");
+          this.form = {
+            previous: "",
+            size: "",
+            placement: "",
+            details: "",
+            name: "",
+            age: "",
+            country: "",
+            other: "",
+          };
         })
         .catch(() => {
           this.$emit("submitted", "fail");

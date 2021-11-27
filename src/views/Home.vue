@@ -28,7 +28,10 @@ export default {
       if (resSuccess === "success") {
         this.$emit("alert", { message: "Contact sent succesfully!" });
       } else {
-        this.$emit("alert", { message: "Contact sent failed!", mode: "red" });
+        this.$emit("alert", {
+          message: "Contact sending failed!",
+          mode: "red",
+        });
       }
     },
   },
