@@ -4,7 +4,10 @@
     <label
       :for="inputId"
       class="c-input__label"
-      :class="{ focused: focused || $isTrue(userInput) }"
+      :class="{
+        focused: focused || $isTrue(userInput),
+        textarea: inputType === 'textarea',
+      }"
       @click.stop="focusInput"
     >
       <span>{{ label }}<span v-if="required">*</span></span>
@@ -15,8 +18,22 @@
       ></i>
     </label>
 
+    <!---------------------- T E X T A R E A ---------------------->
+
+    <textarea
+      v-if="inputType === 'textarea'"
+      v-model="userInput"
+      :maxlength="maxLength"
+      :required="required"
+      :class="{ focused: focused || $isTrue(userInput) }"
+      class="c-input__input textarea"
+      @blur="blurInput"
+      @focus="focusInput"
+    ></textarea>
+
     <!---------------------- I N P U T ---------------------->
     <input
+      v-else
       :id="inputId"
       v-model="userInput"
       class="c-input__input"
@@ -24,6 +41,8 @@
       @blur="blurInput"
       @focus="focusInput"
       :class="{ focused: focused || $isTrue(userInput) }"
+      :maxlength="maxLength"
+      :required="required"
     />
   </div>
 </template>
@@ -42,11 +61,12 @@ export default {
       type: Boolean,
       default: false,
     },
-    infoText: String,
+    infoText: String, // TODO
     required: {
       type: Boolean,
       default: false,
     },
+    maxLength: Number, // TODO
   },
   mounted() {
     if (this.focusOnMount) {
@@ -85,12 +105,12 @@ export default {
   }
 
   &__label {
-    width: 100%;
+    width: calc(100% - 2.5rem);
     display: flex;
     justify-content: space-between;
     align-items: center;
     position: absolute;
-    top: 1.5rem;
+    bottom: 3rem;
     left: 0.5rem;
     font-size: 1rem;
     color: $primary-text;
@@ -103,23 +123,38 @@ export default {
     letter-spacing: 0.5px;
 
     @media (min-width: 1200px) {
+      bottom: 1.4rem;
       padding: 0;
-      top: 2.75rem;
-      left: 1rem;
+      left: 1.25rem;
       font-size: 1rem;
       letter-spacing: 0;
     }
 
     &.focused {
-      padding: 0;
-      font-size: 0.8rem;
-      top: 0;
-      letter-spacing: 0.5px;
-      left: 0;
+      @media (min-width: 1200px) {
+        width: 100%;
+        left: 0;
+        padding: 0;
+        font-size: 0.8rem;
+        bottom: calc(100% - 1.25rem);
+      }
+    }
+
+    &.textarea {
+      bottom: calc(100% - 3.5rem);
 
       @media (min-width: 1200px) {
-        padding-left: 0.25rem;
-         left: 0.5rem;
+        bottom: unset;
+        top: 2.75rem;
+
+        &.focused {
+          left: 0;
+          top: unset;
+          bottom: calc(100% - 1.25rem);
+        
+          padding: 0;
+          font-size: 0.8rem;
+        }
       }
     }
 
@@ -138,6 +173,15 @@ export default {
     font-size: 1rem;
     color: $light-text;
     border: 1px solid $input-background;
+
+    &.textarea {
+      height: 15rem;
+      resize: none;
+
+      @media (min-width: 768px) {
+        height: 7rem;
+      }
+    }
 
     &.focused {
       background-color: $input-background-focused;

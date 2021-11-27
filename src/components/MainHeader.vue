@@ -74,7 +74,6 @@ export default {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  font-family: "Nunito", sans-serif;
   top: 0;
   left: 0;
   background-color: rgba(0, 0, 0, 0.166);
@@ -86,6 +85,7 @@ export default {
     text-decoration: none;
     list-style: none;
     color: rgb(230, 230, 230);
+    font-family: "Nunito", sans-serif;
 
     &.main {
       font-size: 1.25rem;

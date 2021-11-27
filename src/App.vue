@@ -19,7 +19,6 @@ export default {
 </script>
 
 <style lang="scss">
-@import url("https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600;700&family=Rubik:ital,wght@0,300;0,400;0,600;1,700&display=swap");
 @font-face {
   font-family: "Open Sans";
   src: url("/OpenSans/OpenSans-Regular.ttf") format("truetype");
@@ -37,12 +36,22 @@ export default {
   font-weight: bold;
 }
 
+@font-face {
+  font-family: "Nunito";
+  src: url("/Nunito/Nunito-Regular.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "Nunito";
+  src: url("/Nunito/Nunito-SemiBold.ttf") format("truetype");
+  font-weight: 600;
+}
 
 * {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
-    font-family: "Open Sans", Arial, sans-serif;
+ // font-family: "Open Sans", Arial, sans-serif;
 }
 
 #app {

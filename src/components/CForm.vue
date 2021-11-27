@@ -1,5 +1,5 @@
 <template>
-  <form class="c-form">
+  <form class="c-form" name="contact" netlify>
     <fieldset class="c-form__section">
       <h3 class="subtitle">So, you'd like a tattoo?</h3>
 
@@ -28,7 +28,7 @@
       />
 
       <c-input
-        inputType="text"
+        inputType="textarea"
         inputId="details"
         label="Tell me something more about the tattoo you want"
         required
@@ -48,12 +48,12 @@
       <c-input inputType="text" inputId="country" label="Where are you from?" />
 
       <c-input
-        inputType="text"
+        inputType="textarea"
         inputId="other"
         label="All done! :) Do you have something to add? Feel free to write some notes."
       />
 
-      <c-button type="submit" text="Submit" variant="primary" />
+      <c-button type="submit" text="Send" variant="primary" />
     </fieldset>
   </form>
 </template>

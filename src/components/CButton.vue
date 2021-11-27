@@ -26,7 +26,7 @@ export default {
 
 <style lang="scss" scoped>
 .c-button {
-  padding: 0.75rem 1rem;
+  padding: 0.5rem 1rem;
   border: 1px solid $button-secondary;
   background: transparent;
   color: $button-secondary;
@@ -34,10 +34,14 @@ export default {
   min-width: 9rem;
   cursor: pointer;
   text-transform: uppercase;
-  font-size: .9rem;
+  font-size: 0.9rem;
   font-weight: 600;
-transition: all .2s linear;
+  transition: all 0.2s linear;
+  width: 100%;
 
+  @media (min-width: 768px) {
+    width: unset;
+  }
 
   .text {
     letter-spacing: 1px;
@@ -48,7 +52,7 @@ transition: all .2s linear;
     color: $primary-text;
   }
 
-    &:hover {
+  &:hover {
     background-color: white;
     color: $primary-text;
     transform: scale(1.05);
