@@ -3,17 +3,42 @@
     <main-header />
 
     <main class="main">
-      <router-view />
+      <router-view @alert="showAlert" />
     </main>
+
+    <alert
+      v-if="alertMessage"
+      :message="alertMessage"
+      :mode="alertMode"
+      @close="closeAlert"
+    />
   </div>
 </template>
 
 <script>
+import Alert from "./components/Alert.vue";
 import MainHeader from "./components/MainHeader.vue";
 export default {
   name: "App",
   components: {
     MainHeader,
+    Alert,
+  },
+  data() {
+    return {
+      alertMessage: "wdww",
+      alertMode: "",
+    };
+  },
+  methods: {
+    showAlert({ message, mode }) {
+      this.alertMessage = message;
+      this.alertMode = mode;
+    },
+    closeAlert() {
+      this.alertMessage = "";
+      this.alertMode = "";
+    },
   },
 };
 </script>
@@ -51,7 +76,7 @@ export default {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
- // font-family: "Open Sans", Arial, sans-serif;
+  // font-family: "Open Sans", Arial, sans-serif;
 }
 
 #app {

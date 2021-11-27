@@ -1,5 +1,9 @@
 <template>
-  <button class="c-button" :class="variant" @click.stop="$emit('click')">
+  <button
+    class="c-button"
+    :class="variant"
+    @click.stop.prevent="$emit('click')"
+  >
     <!-- @slot icon -->
     <slot></slot>
     <span class="text">{{ text }}</span>

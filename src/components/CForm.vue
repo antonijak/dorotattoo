@@ -1,5 +1,12 @@
 <template>
-  <form class="c-form" name="contact" netlify mode="post" data-netlify-honeypot>
+  <form
+    class="c-form"
+    name="contact"
+    netlify
+    mode="post"
+    data-netlify-honeypot
+    @submit.prevent="handleSubmit"
+  >
     <fieldset class="c-form__section">
       <h3 class="subtitle">So, you'd like a tattoo?</h3>
 
@@ -10,8 +17,8 @@
           { fieldId: 'yes', value: 'y', label: 'Yes' },
           { fieldId: 'no', value: 'n', label: 'No' },
         ]"
-        inputId="previous"
         name="previous"
+        v-model="form.previous"
       />
 
       <c-input
@@ -20,6 +27,7 @@
         name="size"
         label="What is the approximate tattoo size you had in mind?  eg: 10x15cm"
         required
+        v-model="form.size"
       />
 
       <c-input
@@ -28,6 +36,7 @@
         name="placement"
         label="What part of the body would you like to tattoo?"
         required
+        v-model="form.placement"
       />
 
       <c-input
@@ -36,6 +45,7 @@
         name="details"
         label="Tell me something more about the tattoo you want"
         required
+        v-model="form.details"
       />
     </fieldset>
 
@@ -48,6 +58,7 @@
         name="name"
         label="What's your name? "
         required
+        v-model="form.name"
       />
 
       <c-input
@@ -55,6 +66,7 @@
         inputId="age"
         name="age"
         label="How old are you?"
+        v-model="form.age"
       />
 
       <c-input
@@ -62,6 +74,7 @@
         inputId="country"
         name="country"
         label="Where are you from?"
+        v-model="form.country"
       />
 
       <c-input
@@ -69,6 +82,7 @@
         inputId="other"
         name="other"
         label="All done! :) Do you have something to add? Feel free to write some notes."
+        v-model="form.other"
       />
 
       <input type="hidden" name="form-name" value="contact" />
@@ -82,11 +96,56 @@
 import CButton from "./CButton.vue";
 import CCheckbox from "./CCheckbox.vue";
 import CInput from "./CInput.vue";
+import axios from "axios";
+
 export default {
   components: { CInput, CButton, CCheckbox },
   name: "CForm",
   props: {
     msg: String,
+  },
+  data() {
+    return {
+      form: {
+        previous: "",
+        size: "",
+        placement: "",
+        details: "",
+        name: "",
+        age: "",
+        country: "",
+        other: "",
+      },
+    };
+  },
+  methods: {
+    encode(data) {
+      return Object.keys(data)
+        .map(
+          (key) => `${encodeURIComponent(key)}=${encodeURIComponent(data[key])}`
+        )
+        .join("&");
+    },
+    handleSubmit() {
+      const axiosConfig = {
+        header: { "Content-Type": "application/x-www-form-urlencoded" },
+      };
+      axios
+        .post(
+          "/",
+          this.encode({
+            "form-name": "contact",
+            ...this.form,
+          }),
+          axiosConfig
+        )
+        .then(() => {
+          this.$emit("submitted", "success");
+        })
+        .catch(() => {
+          this.$emit("submitted","fail");
+        });
+    },
   },
 };
 </script>

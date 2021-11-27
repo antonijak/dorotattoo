@@ -1,14 +1,17 @@
 <template>
   <div class="home">
+    <!---------------- M A I N   I M A G E ---------------->
     <section class="home__section image">
       <img src="../assets/pexels-connor-danylenko-1414535.jpg" class="image" />
       <img src="../assets/symbol.svg" class="logo" />
     </section>
 
+    <!---------------- F O R M ---------------->
     <section class="home__section" id="form">
-      <c-form />
+      <c-form @submitted="showAlert" />
     </section>
 
+    <!---------------- F A Q ---------------->
     <section class="home__section" id="faq">FAQ</section>
   </div>
 </template>
@@ -20,6 +23,15 @@ export default {
   components: {
     CForm,
   },
+  methods: {
+    showAlert(resSuccess) {
+      if (resSuccess === "success") {
+        this.$emit("alert", { message: "Contact sent succesfully!" });
+      } else {
+        this.$emit("alert", { message: "Contact sent failed!", mode: "red" });
+      }
+    },
+  },
 };
 CForm;
 </script>
@@ -29,7 +41,7 @@ CForm;
   &__section {
     width: 100%;
     min-height: 100vh;
-    padding: 3.5rem .5rem;
+    padding: 3.5rem 0.5rem;
 
     @media (min-width: 1200px) {
       padding: 6rem;

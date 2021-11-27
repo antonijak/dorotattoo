@@ -11,6 +11,7 @@
       @click.stop="focusInput"
     >
       <span>{{ label }}<span v-if="required">*</span></span>
+      
       <i
         v-if="infoText"
         class="fas fa-info-circle icon"
@@ -30,6 +31,7 @@
       @blur="blurInput"
       @focus="focusInput"
       :name="name"
+      @input="handleInput"
     ></textarea>
 
     <!---------------------- I N P U T ---------------------->
@@ -45,6 +47,7 @@
       :maxlength="maxLength"
       :required="required"
       :name="name"
+      @input="handleInput"
     />
   </div>
 </template>
@@ -70,6 +73,7 @@ export default {
       default: false,
     },
     maxLength: Number, // TODO
+    value: [String, Number],
   },
   mounted() {
     if (this.focusOnMount) {
@@ -89,6 +93,9 @@ export default {
     },
     blurInput() {
       this.focused = false;
+    },
+    handleInput() {
+      this.$emit("input", this.userInput);
     },
   },
 };
@@ -154,7 +161,7 @@ export default {
           left: 0;
           top: unset;
           bottom: calc(100% - 1.25rem);
-        
+
           padding: 0;
           font-size: 0.8rem;
         }

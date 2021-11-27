@@ -8,9 +8,15 @@
         :class="{ radio: type === 'radio' }"
         :type="type"
         :id="field.fieldId"
-        :name="inputId"
+        :name="name"
+        :value="field.value"
+        :checked="$isTrue(value) && value === field.value"
+        @click="handleClick"
       />
-      <label class="label" :for="field.fieldId">{{ field.label }}</label>
+
+      <label class="label" :for="field.fieldId">
+        {{ field.label }}
+      </label>
     </div>
   </div>
 </template>
@@ -25,7 +31,13 @@ export default {
     },
     fields: Array,
     label: String,
-    inputId: String
+    name: String,
+    value: String,
+  },
+  methods: {
+    handleClick(e) {
+      this.$emit("input", e.target.value);
+    },
   },
 };
 </script>
@@ -89,7 +101,6 @@ export default {
             border-radius: 50%;
             visibility: visible;
           }
-        
         }
       }
     }
