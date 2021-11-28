@@ -4,12 +4,12 @@
       <h1 class="link__title">Doro tattoo</h1>
     </router-link>
 
- <!-------------- O P E N   M O B I L E -------------->
-    <button class="menu-icon" @click="navVisible = true">
+    <!-------------- O P E N   M O B I L E -------------->
+    <button class="menu-icon" @click="navVisible = !navVisible">
       <i class="fas fa-bars"></i>
     </button>
 
- <!-------------- N A V I G A T I O N -------------->
+    <!-------------- N A V I G A T I O N -------------->
     <nav
       v-if="$route.path === '/'"
       class="navigation"
@@ -17,11 +17,11 @@
       @click="navVisible = false"
     >
       <a href="#" v-scroll-to="'#form'" class="link">
-        <h2 class="link__title">I want a tattoo</h2>
+        <p class="link__title">I want a tattoo</p>
       </a>
 
       <a href="#" v-scroll-to="'#faq'" class="link">
-        <h2 class="link__title">FAQ</h2>
+        <p class="link__title">FAQ</p>
       </a>
     </nav>
 

@@ -6,6 +6,8 @@
       <router-view @alert="showAlert" />
     </main>
 
+    <c-footer />
+
     <alert
       v-if="alertMessage"
       :message="alertMessage"
@@ -17,12 +19,14 @@
 
 <script>
 import Alert from "./components/Alert.vue";
+import CFooter from "./components/CFooter.vue";
 import MainHeader from "./components/MainHeader.vue";
 export default {
   name: "App",
   components: {
     MainHeader,
     Alert,
+    CFooter,
   },
   data() {
     return {

@@ -91,6 +91,11 @@ CForm;
     &.faq {
       background-color: $lighter-background;
       color: $primary-text;
+      padding: 6rem 1.5rem;
+
+      @media (min-width: 1200px) {
+        padding: 6rem;
+      }
     }
   }
 }
