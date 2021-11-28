@@ -66,6 +66,10 @@ export default {
     @media (min-width: 1200px) {
       flex-direction: row;
     }
+
+    @media (min-width: 1980px) {
+      width: 1440px;
+    }
   }
 
   &__navigation {

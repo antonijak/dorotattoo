@@ -49,6 +49,8 @@ CForm;
     min-height: 100vh;
     padding: 3.5rem 0.5rem;
     color: $light-text;
+    display: flex;
+    justify-content: center;
 
     @media (min-width: 1200px) {
       padding: 6rem;

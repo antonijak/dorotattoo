@@ -31,7 +31,7 @@
         label="What is the approximate tattoo size you had in mind?  eg: 10x15cm"
         required
         v-model="form.size"
-         :err-msg="errorMessages.size"
+        :err-msg="errorMessages.size"
       />
 
       <c-input
@@ -41,7 +41,7 @@
         label="What part of the body would you like to tattoo?"
         required
         v-model="form.placement"
-         :err-msg="errorMessages.placement"
+        :err-msg="errorMessages.placement"
       />
 
       <c-input
@@ -51,7 +51,7 @@
         label="Tell me something more about the tattoo you want"
         required
         v-model="form.details"
-         :err-msg="errorMessages.details"
+        :err-msg="errorMessages.details"
       />
     </fieldset>
 
@@ -65,7 +65,7 @@
         label="What's your name? "
         required
         v-model="form.name"
-         :err-msg="errorMessages.name"
+        :err-msg="errorMessages.name"
       />
 
       <c-input
@@ -75,7 +75,7 @@
         label="What's your email? "
         required
         v-model="form.email"
-         :err-msg="errorMessages.email"
+        :err-msg="errorMessages.email"
       />
 
       <c-input
@@ -233,10 +233,18 @@ export default {
 <style scoped lang="scss">
 .c-form {
   min-height: fit-content;
-  max-width: 1000px;
+  width: 1000px;
   display: flex;
   flex-direction: column;
   align-items: flex-end;
+
+  @media (min-width: 1980px) {
+    flex-direction: row;
+    justify-content: space-between;
+    max-width: 1440px;
+    width: 1440px;
+    align-items: flex-start;
+  }
 
   &__section {
     display: flex;
@@ -251,6 +259,11 @@ export default {
 
     @media (min-width: 1200px) {
       padding: 2rem 2rem 2.5rem;
+    }
+
+    @media (min-width: 1980px) {
+      width: calc(50% - 1.5rem);
+      margin-bottom: 0;
     }
 
     .subtitle {
