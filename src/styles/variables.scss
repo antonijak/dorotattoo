@@ -1,19 +1,23 @@
 /* BORDERS */
 $input-border: rgba(255, 255, 255, 0.495);
+$error-border: red;
 
 /* TEXT */
 $primary-text: #31411f;
 $secondary-text: gray;
 $light-text: rgb(220, 220, 220);
 $light-text-secondary: rgb(186, 186, 186);
+$error-text: rgb(249, 150, 150);
 
 /* BACKGROUND */
-$button-primary: rgb(245, 245, 245);
-$button-primary-hover: rgba(255, 255, 255, 0.735);
+$button-primary: #1B2A41;
+$button-primary-hover: #2b3c55;
 $button-secondary: rgb(229, 231, 235);
 $main-background:  #31411f;
 $input-background: #3c4b29;
 $input-background-focused: #435230;
+$checkbox-background-focused: #495736;
 $lighter-background: #899a69;
 
 /* COLORS */
+$light-brown: #d2c6a2;

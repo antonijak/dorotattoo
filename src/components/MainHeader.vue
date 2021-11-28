@@ -87,7 +87,6 @@ export default {
     text-decoration: none;
     list-style: none;
     color: rgb(230, 230, 230);
-    font-family: "Nunito", sans-serif;
 
     &.main {
       font-size: 1.25rem;
@@ -98,6 +97,7 @@ export default {
     &__title {
       font-size: 1.25rem;
       font-weight: 600;
+      font-family: "Nunito", sans-serif;
     }
   }
 

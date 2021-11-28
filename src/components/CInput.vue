@@ -11,7 +11,7 @@
       @click.stop="focusInput"
     >
       <span>{{ label }}<span v-if="required">*</span></span>
-      
+
       <i
         v-if="infoText"
         class="fas fa-info-circle icon"
@@ -26,7 +26,7 @@
       v-model="userInput"
       :maxlength="maxLength"
       :required="required"
-      :class="{ focused: focused || $isTrue(userInput) }"
+      :class="{ focused: focused || $isTrue(userInput), error: errorMsg }"
       class="c-input__input textarea"
       @blur="blurInput"
       @focus="focusInput"
@@ -43,12 +43,16 @@
       :type="inputType"
       @blur="blurInput"
       @focus="focusInput"
-      :class="{ focused: focused || $isTrue(userInput) }"
+      :class="{ focused: focused || $isTrue(userInput), error: errorMsg }"
       :maxlength="maxLength"
       :required="required"
       :name="name"
       @input="handleInput"
     />
+
+    <small v-if="errorMsg" class="c-input__error">
+      {{ errorMsg }}
+    </small>
   </div>
 </template>
 
@@ -67,13 +71,14 @@ export default {
       type: Boolean,
       default: false,
     },
-    infoText: String, // TODO
+    infoText: String, // TODO info tooltip
     required: {
       type: Boolean,
       default: false,
     },
-    maxLength: Number, // TODO
+    maxLength: Number, // TODO maxlength
     value: [String, Number],
+    errMsg: String,
   },
   mounted() {
     if (this.focusOnMount) {
@@ -84,6 +89,7 @@ export default {
     return {
       userInput: "",
       focused: false,
+      errorMsg: "",
     };
   },
   methods: {
@@ -93,9 +99,37 @@ export default {
     },
     blurInput() {
       this.focused = false;
+      this.validateField();
     },
     handleInput() {
       this.$emit("input", this.userInput);
+    },
+    validateField() {
+      let valid = true;
+      // CHECK IF EMPTY
+      if (this.required) {
+        this.errorMsg = this.userInput === "" ? "Field can't be empty" : "";
+      }
+
+      // CHECK VALID TYPE
+      if (this.inputType === "email") {
+        const rgxEmail = /\S+@\S+\.\S+/;
+        valid = rgxEmail.test(this.userInput);
+
+        if (valid) {
+          this.errorMsg = "";
+        } else {
+          this.errorMsg = "Please write valid email";
+        }
+      } else if (this.inputType === "text") {
+        // TODO input type text validation
+      } // TODO all input types validation
+    },
+  },
+  watch: {
+    errMsg() {
+      // set form validation error
+      this.errorMsg = this.errMsg;
     },
   },
 };
@@ -107,8 +141,7 @@ export default {
   flex-direction: column;
   width: 100%;
   position: relative;
-  margin-bottom: 1.5rem;
-  padding-top: 2.5rem;
+  padding: 2.5rem 0;
 
   @media (min-width: 1200px) {
     padding-top: 1.5rem;
@@ -120,7 +153,7 @@ export default {
     justify-content: space-between;
     align-items: center;
     position: absolute;
-    bottom: 3rem;
+    bottom: 5.5rem;
     left: 0.5rem;
     font-size: 1rem;
     color: $primary-text;
@@ -133,7 +166,7 @@ export default {
     letter-spacing: 0.5px;
 
     @media (min-width: 1200px) {
-      bottom: 1.4rem;
+      bottom: 3.9rem;
       padding: 0;
       left: 1.25rem;
       font-size: 1rem;
@@ -198,9 +231,21 @@ export default {
       background-color: $input-background-focused;
     }
 
+    &.error {
+      border: 1px solid $error-border;
+    }
+
     &:hover {
       background-color: $input-background-focused;
     }
+  }
+
+  &__error {
+    color: $error-text;
+    padding: 0.25rem;
+    position: absolute;
+    bottom: 1rem;
+    letter-spacing: 0.5px;
   }
 }
 </style>

@@ -20,6 +20,8 @@
         ]"
         name="previous"
         v-model="form.previous"
+        required
+        :err-msg="errorMessages.previous"
       />
 
       <c-input
@@ -29,6 +31,7 @@
         label="What is the approximate tattoo size you had in mind?  eg: 10x15cm"
         required
         v-model="form.size"
+         :err-msg="errorMessages.size"
       />
 
       <c-input
@@ -38,6 +41,7 @@
         label="What part of the body would you like to tattoo?"
         required
         v-model="form.placement"
+         :err-msg="errorMessages.placement"
       />
 
       <c-input
@@ -47,6 +51,7 @@
         label="Tell me something more about the tattoo you want"
         required
         v-model="form.details"
+         :err-msg="errorMessages.details"
       />
     </fieldset>
 
@@ -60,6 +65,25 @@
         label="What's your name? "
         required
         v-model="form.name"
+         :err-msg="errorMessages.name"
+      />
+
+      <c-input
+        inputType="email"
+        inputId="email"
+        name="email"
+        label="What's your email? "
+        required
+        v-model="form.email"
+         :err-msg="errorMessages.email"
+      />
+
+      <c-input
+        inputType="text"
+        inputId="instagram"
+        name="instagram"
+        label="What's your Instagram handle? "
+        v-model="form.instagram"
       />
 
       <c-input
@@ -78,14 +102,6 @@
         v-model="form.country"
       />
 
-      <c-input
-        inputType="textarea"
-        inputId="other"
-        name="other"
-        label="All done! :) Do you have something to add? Feel free to write some notes."
-        v-model="form.other"
-      />
-
       <input type="hidden" name="form-name" value="contact" />
 
       <c-button
@@ -93,13 +109,13 @@
         text="Send"
         variant="primary"
         @click="handleSubmit"
-        :disabled="submitDisabled"
       />
     </fieldset>
   </form>
 </template>
 
 <script>
+// TODO fieldset steps animation
 import CButton from "./CButton.vue";
 import CCheckbox from "./CCheckbox.vue";
 import CInput from "./CInput.vue";
@@ -120,9 +136,25 @@ export default {
         details: "",
         name: "",
         age: "",
+        email: "",
+        instagram: "",
         country: "",
         other: "",
       },
+      errorMessages: {
+        previous: "",
+        size: "",
+        placement: "",
+        details: "",
+        name: "",
+        email: "",
+        instagram: "",
+        age: "",
+        country: "",
+        other: "",
+      },
+      required: ["previous", "size", "placement", "details", "name", "email"],
+      // TODO make form definition object and dynamic form
       submitCount: 0,
     };
   },
@@ -134,46 +166,62 @@ export default {
         )
         .join("&");
     },
-    handleSubmit() {
-      // TODO add validation
-      const axiosConfig = {
-        header: { "Content-Type": "application/x-www-form-urlencoded" },
-      };
-      axios
-        .post(
-          "/",
-          this.encode({
-            "form-name": "contact",
-            ...this.form,
-          }),
-          axiosConfig
-        )
-        .then(() => {
-          this.$emit("submitted", "success");
-          this.form = {
-            previous: "",
-            size: "",
-            placement: "",
-            details: "",
-            name: "",
-            age: "",
-            country: "",
-            other: "",
-          };
-          this.submitCount++;
-        })
-        .catch(() => {
-          this.$emit("submitted", "fail");
+    validateForm() {
+      if (this.formInvalid) {
+        this.required.forEach((item) => {
+          if (this.form[item] === "") {
+            this.errorMessages[item] = "Field can't be empty";
+          }
         });
+      }
+    },
+    handleSubmit() {
+      this.validateForm();
+
+      if (this.formInvalid) {
+        return;
+      } else {
+        const axiosConfig = {
+          header: { "Content-Type": "application/x-www-form-urlencoded" },
+        };
+        axios
+          .post(
+            "/",
+            this.encode({
+              "form-name": "contact",
+              ...this.form,
+            }),
+            axiosConfig
+          )
+          .then(() => {
+            this.$emit("submitted", "success");
+            this.form = {
+              previous: "",
+              size: "",
+              placement: "",
+              details: "",
+              name: "",
+              age: "",
+              country: "",
+              instagram: "",
+              email: "",
+            };
+            this.submitCount++;
+          })
+          .catch(() => {
+            this.$emit("submitted", "fail");
+          });
+      }
     },
   },
   computed: {
-    submitDisabled() {
+    formInvalid() {
       return (
         this.form.previous === "" ||
         this.form.size === "" ||
         this.form.placement === "" ||
         this.form.details === "" ||
+        this.form.email === "" ||
         this.form.name === ""
       );
     },

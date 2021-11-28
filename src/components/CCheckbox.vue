@@ -1,6 +1,6 @@
 <template>
   <div class="c-checkbox">
-    <p class="c-checkbox__label">{{ label }}</p>
+    <p class="c-checkbox__label">{{ label }}<span v-if="required">*</span></p>
 
     <div v-for="field in fields" class="c-checkbox__field" :key="field.fieldId">
       <input
@@ -18,6 +18,10 @@
         {{ field.label }}
       </label>
     </div>
+
+    <small v-if="errorMsg" class="c-checkbox__error">
+      {{ errorMsg }}
+    </small>
   </div>
 </template>
 
@@ -33,10 +37,24 @@ export default {
     label: String,
     name: String,
     value: String,
+    required: Boolean,
+    errMsg: String,
+  },
+  data() {
+    return {
+      errorMsg: "",
+    };
   },
   methods: {
     handleClick(e) {
       this.$emit("input", e.target.value);
+      this.errorMsg = "";
+    },
+  },
+  watch: {
+    errMsg() {
+      // set form validation error
+      this.errorMsg = this.errMsg;
     },
   },
 };
@@ -48,7 +66,8 @@ export default {
   align-items: center;
   flex-wrap: wrap;
   width: 100%;
-  margin-bottom: 1.5rem;
+  padding: 1.5rem 0 2.5rem;
+  position: relative;
 
   &__label {
     color: $light-text-secondary;
@@ -60,6 +79,12 @@ export default {
   &__field {
     margin-right: 1.5rem;
     cursor: pointer;
+
+    &:hover {
+      .input:before {
+        background-color: $checkbox-background-focused;
+      }
+    }
 
     .label {
       color: $light-text-secondary;
@@ -104,6 +129,14 @@ export default {
         }
       }
     }
+  }
+
+  &__error {
+    color: $error-text;
+    padding: 0.25rem;
+    position: absolute;
+    bottom: 0.75rem;
+    letter-spacing: 0.5px;
   }
 }
 </style>

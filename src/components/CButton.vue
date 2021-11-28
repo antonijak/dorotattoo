@@ -43,6 +43,7 @@ export default {
   font-weight: 600;
   transition: all 0.2s linear;
   width: 100%;
+  text-align: center;
 
   @media (min-width: 768px) {
     width: unset;
@@ -55,13 +56,12 @@ export default {
   &.primary {
     background-color: $button-primary;
     border-color: $button-primary;
-    color: $primary-text;
+    color: $light-text;
   }
 
   &:hover {
-      background-color: $button-primary-hover;
+    background-color: $button-primary-hover;
     border-color: $button-primary-hover;
-    color: $primary-text;
     transform: scale(1.05);
   }
 
