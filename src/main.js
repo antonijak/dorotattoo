@@ -3,6 +3,7 @@ import App from "./App.vue";
 import router from "./router";
 import store from "./store";
 import VueScrollTo from "vue-scrollto";
+import i18n from "./plugins/i18n";
 
 Vue.config.productionTip = false;
 
@@ -16,6 +17,7 @@ Vue.prototype.$isTrue = (value) => {
 };
 
 Vue.use(VueScrollTo);
+
 
 // You can also pass in the default options
 Vue.use(VueScrollTo, {
@@ -35,5 +37,6 @@ Vue.use(VueScrollTo, {
 new Vue({
   router,
   store,
+  i18n,
   render: (h) => h(App),
 }).$mount("#app");

@@ -13,7 +13,7 @@
 
     <!---------------- F A Q ---------------->
     <section class="home__section faq" id="faq">
-      <h3 class="section-title">FAQ</h3>
+      <h3 class="section-title">{{ $t('HOME.FAQ') }}</h3>
       <p>...coming soon</p>
     </section>
   </div>

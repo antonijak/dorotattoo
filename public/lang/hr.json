@@ -1,0 +1,30 @@
+{
+    "MAIN_HEADER": {
+        "MSG_GET_FORM": "Želim tetovažu",
+        "FAQ": "Info"
+    },
+    "FORM": {
+        "SUBTITLE_1": "Dakle, želiš tetovažu?",
+        "SUBTITLE_2": "Zvuči dobro:)",
+        "YES": "Da",
+        "NO":"Ne",
+        "PREVIOUS": "Imaš li već tetovažu?",
+        "SIZE": "Koja je otprilike veličina tetovaže koju želiš? npr. 10x15cm",
+        "PLACEMENT": "Koji dio tijela želiš tetovirati?",
+        "DETAILS": "Opiši tetovažu koju želiš",
+        "NAME": "Kako se zoveš?",
+        "EMAIL": "Tvoj email?",
+        "INSTAGRAM": "Instagram?",
+        "AGE": "Kolko imaš godina?",
+        "COUNTRY": "Otkuda si?"
+    },
+    "FOOTER": {
+        "MSG_GET_FORM": "Želim tetovažu",
+        "FAQ": "Info",
+        "LINKS": "Linkovi:",
+        "COPYRIGHT": "Sva prava pridrzana."
+    },
+    "HOME": {
+        "FAQ": "Info"
+    }
+}

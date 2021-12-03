@@ -8,17 +8,17 @@
         </router-link>
 
         <a href="#" v-scroll-to="'#form'" class="footer-link">
-          <p class="link__title">I want a tattoo</p>
+          <p class="link__title">{{ $t("FOOTER.MSG_GET_FORM") }}</p>
         </a>
 
         <a href="#" v-scroll-to="'#faq'" class="footer-link">
-          <p class="link__title">FAQ</p>
+          <p class="link__title">{{ $t("FOOTER.FAQ") }}</p>
         </a>
       </nav>
 
       <!----------------------- L I N K S ----------------------->
       <div class="c-footer__links">
-        <h4 class="c-footer__links__title">Links:</h4>
+        <h4 class="c-footer__links__title">{{ $t("FOOTER.LINKS") }}</h4>
         <a
           class="link"
           href="https://www.instagram.com/doro_tattoo/"
@@ -30,11 +30,11 @@
     </div>
 
     <!----------------------- C O P Y R I G H T ----------------------->
-    <small class="c-footer__copyright"
-      >Copyright © {{ year }}
+    <small class="c-footer__copyright">
+      Copyright © {{ year }}
       <a href="https://antonijakasum.com" target="_blank" class="link"
         >Antonija Kasum</a
-      >. All Rights reserved.</small
+      >. {{$t('FOOTER.COPYRIGHT')}}</small
     >
   </footer>
 </template>

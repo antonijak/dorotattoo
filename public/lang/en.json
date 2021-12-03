@@ -1,0 +1,30 @@
+{
+    "MAIN_HEADER": {
+        "MSG_GET_FORM": "I want a tattoo",
+        "FAQ": "FAQ"
+    },
+    "FORM": {
+        "SUBTITLE_1": "So, you'd like a tattoo?",
+        "SUBTITLE_2": "Sounds good :)",
+        "YES": "Yes",
+        "NO":"No",
+        "PREVIOUS": "Do you already have a tattoo?",
+        "SIZE": "What is the approximate tattoo size you had in mind?  eg: 10x15cm",
+        "PLACEMENT": "What part of the body would you like to tattoo?",
+        "DETAILS": "Tell me something more about the tattoo you want",
+        "NAME": "What's your name?",
+        "EMAIL": "What's your email?",
+        "INSTAGRAM": "What's your Instagram handle?",
+        "AGE": "How old are you?",
+        "COUNTRY": "Where are you from?"
+    },
+    "FOOTER": {
+        "MSG_GET_FORM": "I want a tattoo",
+        "FAQ": "FAQ",
+        "LINKS": "Links:",
+        "COPYRIGHT": "All rights reserved."
+    },
+    "HOME": {
+        "FAQ": "FAQ"
+    }
+}

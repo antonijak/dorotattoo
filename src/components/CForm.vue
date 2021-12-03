@@ -1,4 +1,5 @@
 <template>
+  <!-- if form changes the fields have to be defined also in form.html for netlify crawler -->
   <form
     class="c-form"
     name="contact"
@@ -9,14 +10,14 @@
     :key="submitCount"
   >
     <fieldset class="c-form__section">
-      <h3 class="subtitle">So, you'd like a tattoo?</h3>
+      <h3 class="subtitle">{{ $t("FORM.SUBTITLE_1") }}</h3>
 
       <c-checkbox
-        label="Do you already have a tattoo?"
+        :label="$t('FORM.PREVIOUS')"
         type="radio"
         :fields="[
-          { fieldId: 'yes', value: 'y', label: 'Yes' },
-          { fieldId: 'no', value: 'n', label: 'No' },
+          { fieldId: 'yes', value: 'y', label: $t('FORM.YES') },
+          { fieldId: 'no', value: 'n', label: $t('FORM.NO') },
         ]"
         name="previous"
         v-model="form.previous"
@@ -28,7 +29,7 @@
         inputType="text"
         inputId="size"
         name="size"
-        label="What is the approximate tattoo size you had in mind?  eg: 10x15cm"
+        :label="$t('FORM.SIZE')"
         required
         v-model="form.size"
         :err-msg="errorMessages.size"
@@ -38,7 +39,7 @@
         inputType="text"
         inputId="placement"
         name="placement"
-        label="What part of the body would you like to tattoo?"
+        :label="$t('FORM.PLACEMENT')"
         required
         v-model="form.placement"
         :err-msg="errorMessages.placement"
@@ -48,7 +49,7 @@
         inputType="textarea"
         inputId="details"
         name="details"
-        label="Tell me something more about the tattoo you want"
+        :label="$t('FORM.DETAILS')"
         required
         v-model="form.details"
         :err-msg="errorMessages.details"
@@ -56,13 +57,13 @@
     </fieldset>
 
     <fieldset class="c-form__section">
-      <h3 class="subtitle">Sounds good :)</h3>
+      <h3 class="subtitle">{{ $t("FORM.SUBTITLE_2")}}</h3>
 
       <c-input
         inputType="text"
         inputId="name"
         name="name"
-        label="What's your name? "
+        :label="$t('FORM.NAME')"
         required
         v-model="form.name"
         :err-msg="errorMessages.name"
@@ -72,7 +73,7 @@
         inputType="email"
         inputId="email"
         name="email"
-        label="What's your email? "
+        :label="$t('FORM.EMAIL')"
         required
         v-model="form.email"
         :err-msg="errorMessages.email"
@@ -82,7 +83,7 @@
         inputType="text"
         inputId="instagram"
         name="instagram"
-        label="What's your Instagram handle? "
+        :label="$t('FORM.INSTAGRAM')"
         v-model="form.instagram"
       />
 
@@ -90,7 +91,7 @@
         inputType="text"
         inputId="age"
         name="age"
-        label="How old are you?"
+        :label="$t('FORM.AGE')"
         v-model="form.age"
       />
 
@@ -98,7 +99,7 @@
         inputType="text"
         inputId="country"
         name="country"
-        label="Where are you from?"
+        :label="$t('FORM.COUNTRY')"
         v-model="form.country"
       />
 

@@ -17,12 +17,37 @@
       @click="navVisible = false"
     >
       <a href="#" v-scroll-to="'#form'" class="link">
-        <p class="link__title">I want a tattoo</p>
+        <p class="link__title">{{ $t("MAIN_HEADER.MSG_GET_FORM") }}</p>
       </a>
 
       <a href="#" v-scroll-to="'#faq'" class="link">
-        <p class="link__title">FAQ</p>
+        <p class="link__title">{{ $t("MAIN_HEADER.FAQ") }}</p>
       </a>
+
+      <div
+        class="link lang"
+        @click="langVisible = !langVisible"
+        @mouseover="langVisible = true"
+      >
+        <p class="link__title lang">
+          {{ locale }}
+        </p>
+
+        <div
+          v-if="langVisible"
+          class="dropdown"
+          @mouseout="langVisible = false"
+        >
+          <p
+            v-for="lang in locales.slice(1, locales.length)"
+            :key="lang"
+            class="link__title lang"
+            @click="setLocale(lang)"
+          >
+            {{ lang }}
+          </p>
+        </div>
+      </div>
     </nav>
 
     <!-- <ul class="breadcrumbs">
@@ -57,14 +82,39 @@ export default {
     return {
       breadcrumbs: [],
       navVisible: false,
+      locales: ["hr", "en"],
+      langVisible: false,
     };
   },
   mounted() {
     this.breadcrumbs = this.$route.meta.breadcrumbs;
+    if (this.locale) {
+      this.locales = this.locales.filter((item) => item !== this.locale);
+      this.locales.unshift(this.locale);
+    }
+  },
+  methods: {
+    setLocale(lang) {
+      this.$i18n.locale = lang;
+      this.langVisible = false;
+      this.$nextTick();
+      localStorage.setItem("doroLANG", this.locale);
+    },
   },
   watch: {
     $route() {
       this.breadcrumbs = this.$route.meta.breadcrumbs;
+    },
+    locale() {
+      if (this.locale) {
+        this.locales = this.locales.filter((item) => item !== this.locale);
+        this.locales.unshift(this.locale);
+      }
+    },
+  },
+  computed: {
+    locale() {
+      return this.$i18n.locale;
     },
   },
 };
@@ -91,6 +141,16 @@ export default {
     text-decoration: none;
     list-style: none;
     color: rgb(230, 230, 230);
+    position: relative;
+
+    &.lang {
+      cursor: pointer;
+      &:hover {
+        .dropdown {
+          display: block;
+        }
+      }
+    }
 
     &.main {
       font-size: 1.25rem;
@@ -102,6 +162,22 @@ export default {
       font-size: 1.25rem;
       font-weight: 600;
       font-family: "Nunito", sans-serif;
+
+      &.lang {
+        text-transform: uppercase;
+      }
+    }
+
+    .dropdown {
+      position: absolute;
+      top: calc(100% + 0.75rem);
+      right: -0.75rem;
+      background-color: rgba(0, 0, 0, 0.166);
+
+      .link__title.lang {
+        padding: 0.75rem;
+        display: block;
+      }
     }
   }
 
