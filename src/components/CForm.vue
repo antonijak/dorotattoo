@@ -107,7 +107,7 @@
 
       <c-button
         type="submit"
-        text="Send"
+        :text="$t('FORM.SEND')"
         variant="primary"
         @click="handleSubmit"
       />

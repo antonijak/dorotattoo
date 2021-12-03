@@ -16,7 +16,8 @@
         "EMAIL": "What's your email?",
         "INSTAGRAM": "What's your Instagram handle?",
         "AGE": "How old are you?",
-        "COUNTRY": "Where are you from?"
+        "COUNTRY": "Where are you from?",
+        "SEND": "Send"
     },
     "FOOTER": {
         "MSG_GET_FORM": "I want a tattoo",

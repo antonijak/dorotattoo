@@ -16,13 +16,14 @@
         "EMAIL": "Tvoj email?",
         "INSTAGRAM": "Instagram?",
         "AGE": "Kolko imaš godina?",
-        "COUNTRY": "Otkuda si?"
+        "COUNTRY": "Otkuda si?",
+        "SEND": "Pošalji"
     },
     "FOOTER": {
         "MSG_GET_FORM": "Želim tetovažu",
         "FAQ": "Info",
         "LINKS": "Linkovi:",
-        "COPYRIGHT": "Sva prava pridrzana."
+        "COPYRIGHT": "Sva prava pridržana."
     },
     "HOME": {
         "FAQ": "Info"
