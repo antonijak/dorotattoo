@@ -83,7 +83,7 @@ export default {
   z-index: 1;
   position: fixed;
 
-  @media(min-width: 1980px){
+  @media (min-width: 1980px) {
     padding: 0.75rem calc((100% - 1440px) / 2);
   }
 
