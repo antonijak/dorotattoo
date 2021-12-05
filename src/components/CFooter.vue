@@ -34,7 +34,7 @@
       Copyright © {{ year }}
       <a href="https://antonijakasum.com" target="_blank" class="link"
         >Antonija Kasum</a
-      >. {{$t('FOOTER.COPYRIGHT')}}</small
+      >. {{ $t("FOOTER.COPYRIGHT") }}</small
     >
   </footer>
 </template>

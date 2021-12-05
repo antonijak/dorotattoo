@@ -184,7 +184,7 @@ export default {
 
       &.locale {
         display: none;
-         @media (min-width: 1200px) {
+        @media (min-width: 1200px) {
           display: block;
         }
       }
@@ -197,9 +197,9 @@ export default {
       background-color: rgba(0, 0, 0, 0.166);
       display: none;
 
-       @media (min-width: 1200px) {
-          display: block;
-        }
+      @media (min-width: 1200px) {
+        display: block;
+      }
 
       .link__title.lang {
         padding: 0.75rem;

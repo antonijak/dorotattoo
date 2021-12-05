@@ -57,7 +57,7 @@
     </fieldset>
 
     <fieldset class="c-form__section">
-      <h3 class="subtitle">{{ $t("FORM.SUBTITLE_2")}}</h3>
+      <h3 class="subtitle">{{ $t("FORM.SUBTITLE_2") }}</h3>
 
       <c-input
         inputType="text"

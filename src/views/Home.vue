@@ -176,8 +176,10 @@ CForm;
           .faq-question {
             cursor: pointer;
 
-            &:hover {
-              color: $primary-text;
+            @media (min-width: 1200px) {
+              &:hover {
+                color: $primary-text;
+              }
             }
 
             .question {
