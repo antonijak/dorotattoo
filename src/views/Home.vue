@@ -8,13 +8,41 @@
 
     <!---------------- F O R M ---------------->
     <section class="home__section" id="form">
-      <c-form @submitted="showAlert" />
+      <div class="home__section__content">
+        <c-form @submitted="showAlert" />
+      </div>
     </section>
 
     <!---------------- F A Q ---------------->
     <section class="home__section faq" id="faq">
-      <h3 class="section-title">{{ $t('HOME.FAQ') }}</h3>
-      <p>...coming soon</p>
+      <div class="home__section__content">
+        <h3 class="section-title">{{ $t("FAQ.TITLE") }}</h3>
+
+        <ul class="faq__questions">
+          <li
+            v-for="(question, index) in questions"
+            :key="question.q"
+            class="faq-question"
+          >
+            <h4 @click="showAnswer(index)" class="question">
+              {{ question.q }}
+            </h4>
+
+            <ul
+              v-if="visibleIndex === index && Array.isArray(question.a)"
+              class="answer"
+            >
+              <li v-for="item in question.a" :key="item" class="answer__part">
+                {{ item }}
+              </li>
+            </ul>
+
+            <p v-else-if="visibleIndex === index" class="answer">
+              {{ question.a }}
+            </p>
+          </li>
+        </ul>
+      </div>
     </section>
   </div>
 </template>
@@ -25,6 +53,11 @@ export default {
   name: "Home",
   components: {
     CForm,
+  },
+  data() {
+    return {
+      visibleIndex: null,
+    };
   },
   methods: {
     showAlert(resSuccess) {
@@ -37,6 +70,18 @@ export default {
         });
       }
     },
+    showAnswer(index) {
+      if (this.visibleIndex === index) {
+        this.visibleIndex = null;
+      } else {
+        this.visibleIndex = index;
+      }
+    },
+  },
+  computed: {
+    questions() {
+      return this.$t("FAQ.QUESTIONS", { returnObjects: true });
+    },
   },
 };
 CForm;
@@ -44,16 +89,30 @@ CForm;
 
 <style scoped lang="scss">
 .home {
+  width: 100%;
+
   &__section {
     width: 100%;
     min-height: 100vh;
-    padding: 3.5rem 0.5rem;
     color: $light-text;
     display: flex;
     justify-content: center;
 
-    @media (min-width: 1200px) {
-      padding: 6rem;
+    &__content {
+      padding: 3.5rem 0.5rem;
+      display: flex;
+      justify-content: center;
+      width: 100%;
+
+      @media (min-width: 1200px) {
+        padding: 6rem;
+        width: 1000px;
+      }
+
+      @media (min-width: 1980px) {
+        max-width: 1440px;
+        width: 1440px;
+      }
     }
 
     &.image {
@@ -93,10 +152,53 @@ CForm;
     &.faq {
       background-color: $lighter-background;
       color: $primary-text;
-      padding: 6rem 1.5rem;
+      width: 100%;
+      flex-direction: column;
+      align-items: center;
 
-      @media (min-width: 1200px) {
-        padding: 6rem;
+      .home__section__content {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        color: $dark-text;
+
+        .faq__questions {
+          width: 100%;
+          list-style: none;
+          margin-top: 3rem;
+          padding: 0 1rem;
+
+          @media (min-width: 1200px) {
+            padding: 0;
+          }
+
+          .faq-question {
+            cursor: pointer;
+
+            &:hover {
+              color: $primary-text;
+            }
+
+            .question {
+              font-weight: 600;
+              padding: 1.5rem 0;
+              line-height: 1.75rem;
+              font-size: 1.1rem;
+            }
+
+            .answer {
+              width: 100%;
+              line-height: 2rem;
+              margin-bottom: 1.5rem;
+
+              &__part {
+                margin-bottom: 1rem;
+                margin-left: 1.5rem;
+              }
+            }
+          }
+        }
       }
     }
   }

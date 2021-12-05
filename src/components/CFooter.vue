@@ -95,6 +95,7 @@ export default {
       font-size: 1rem;
       font-weight: normal;
       padding: 0.25rem;
+      min-width: fit-content;
 
       @media (min-width: 768px) {
         margin-right: 1.5rem;

@@ -29,8 +29,17 @@
         @click="langVisible = !langVisible"
         @mouseover="langVisible = true"
       >
-        <p class="link__title lang">
+        <p class="link__title lang locale">
           {{ locale }}
+        </p>
+
+        <p
+          v-for="lang in locales.slice(1, locales.length)"
+          :key="lang"
+          class="link__title lang mobile"
+          @click="setLocale(lang)"
+        >
+          {{ lang }}
         </p>
 
         <div
@@ -166,6 +175,19 @@ export default {
       &.lang {
         text-transform: uppercase;
       }
+
+      &.mobile {
+        @media (min-width: 1200px) {
+          display: none;
+        }
+      }
+
+      &.locale {
+        display: none;
+         @media (min-width: 1200px) {
+          display: block;
+        }
+      }
     }
 
     .dropdown {
@@ -173,6 +195,11 @@ export default {
       top: calc(100% + 0.75rem);
       right: -0.75rem;
       background-color: rgba(0, 0, 0, 0.166);
+      display: none;
+
+       @media (min-width: 1200px) {
+          display: block;
+        }
 
       .link__title.lang {
         padding: 0.75rem;
@@ -202,6 +229,7 @@ export default {
     right: 0;
     z-index: 2;
     flex-direction: column;
+    min-width: fit-content;
 
     @media (min-width: 1200px) {
       visibility: visible;
@@ -217,12 +245,14 @@ export default {
       padding: 1rem;
       background-color: $main-background;
       width: 15rem;
+      display: block;
 
       @media (min-width: 1200px) {
         padding: 0;
         background-color: transparent;
         margin-right: 1.5rem;
         width: fit-content;
+        min-width: fit-content;
       }
 
       &:last-child {

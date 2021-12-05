@@ -234,7 +234,7 @@ export default {
 <style scoped lang="scss">
 .c-form {
   min-height: fit-content;
-  width: 1000px;
+  width: 100%;
   display: flex;
   flex-direction: column;
   align-items: flex-end;
@@ -242,8 +242,6 @@ export default {
   @media (min-width: 1980px) {
     flex-direction: row;
     justify-content: space-between;
-    max-width: 1440px;
-    width: 1440px;
     align-items: flex-start;
   }
 

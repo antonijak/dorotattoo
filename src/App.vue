@@ -95,11 +95,12 @@ export default {
   // background-repeat: no-repeat;
   // background-size: 100%;
   min-height: 100vh;
-  min-width: 100vw;
+  width: 100vw;
   background-color: $main-background;
   position: relative;
 
   .main {
+    width: 100%;
   }
 }
 </style>

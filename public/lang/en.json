@@ -26,6 +26,37 @@
         "COPYRIGHT": "All rights reserved."
     },
     "HOME": {
-        "FAQ": "FAQ"
+    },
+    "FAQ": {
+        "TITLE": "FAQ",
+        "QUESTIONS": [
+            {"q": "What is the best time of year to get a tattoo?", "a": "You can get a tattoo all year round! It's just important to keep it out of direct sun and avoid swimming/ soaking it in water or in the sea for at least 3 weeks after you get it.This is to avoid disrupting the healing process and having parts of the tattoo ink falling out."},
+            {"q": "How long until I get my reply?", "a": "It can be within a day or up to two weeks. Please understand I’m just one person trying to keep up with many of you guys!"},
+            {"q": "I’m worried about being allergic to tattoo ink! Could we test it first?", "a": "Yes, absolutely! Contact me and we will arrange a test. I will poke a tiny dot which we will use as the test to see how your skin reacts to the ink. Try to let me know beforehand what ingredients you’re allergic to because not all inks have the same ingredients."},
+            {"q": "Can I get the tattoo price in advance?", "a": "To give you an estimation of the price it’s necessary that you provide me with the size of your desired tattoo (in cm) and describe the design well. After you share all the necessary info and provide me with reference pictures if you have them, I’ll give you the rates in the next email."},
+            {"q": "I have an idea but not the final version of the tattoo I want.", "a": "Fill in the form and describe your idea as best you can. Then there are two options: I create my own interpretation of your idea or we take extra time and create a design together on the day of your tattoo appointment."},
+            {"q": "Is it better to know exactly what I want or should I give my tattoo artist full artistic freedom?", "a": "Both are fine! If you have a clear idea and a reference picture of what you want, you can also let me know if you want the design interpreted in my style."},
+            {"q": "Can I ask for a lot of changes on the sketch I receive, if I don’t like it entirely?", "a": "It is absolutely fine, it’s desirable even! I want you to absolutely LOVE the design before we start poking it into your skin. It is forever, after all."},
+            {"q": "Do I get a sketch before I book an appointment?", "a": "To get your sketch, we first need to confirm your appointment by paying the deposit (30% of the price of your tattoo). After this, a couple days before the appointment date I will send you the sketch and, if everything is alright we confirm the price.  If you want to make any changes, they will be done in those days before your appointment. I’ll make sure everything is finalised and to your linking before the appointment."},
+            {"q": "Do I need to make a deposit for my tattoo?", "a": "Yes! Your appointment is only booked once I receive the deposit. Until then your time slot can be taken by someone who pays their deposit before you. The amount of the deposit will be deducted from the full price on the day of the tattoo."},
+            {"q": "Is it possible to purchase a tattoo coupon as a gift for someone?", "a": "Yes! Just DM me and I’ll send it to you."},
+            {"q": "Do you tattoo persons under the age of 18?", "a": "I tattoo people from the age of 16 - 18 only in case of parental approval!"},
+            {"q": "Are there any body parts you refuse or advise against tattooing?", "a": "Some parts of the body I will advise against but if you really want it, I’ll do it. But then the healing is at your risk!"},
+            {"q": "Can I get a tattoo if I have psoriasis/neurodermatitis/other skin condition?", "a": "Unfortunately, it is not recommended to tattoo skin with psoriasis or other skin conditions. Even patches of the skin where there is no psoriasis, it can appear later and ruin the tattoo. Of course, if you still want to do it, it is at your own risk! In any case, please consult your doctor before making a decision!"},
+            {"q": "Will my tattoo hurt? Which body part hurts the most?", "a": "Pain levels differ from person to person. As a rule, parts of the body where the bone is closer to the skin might feel a bit more sensitive. However, in my experience, the vast majority of the people I’ve tattooed describe the sensation as “pinching”. People tend to fall asleep when I tattoo them. I strive to make the process as gentle as possible so if pain is your concern, you really should not worry!"},
+            {"q": "Do you do cover ups?", "a": "It really depends on the original tattoo and what you want to cover it with. If I determine I won’t be able to do a good job considering what you want, I’ll refer you to a different artist."},
+            {"q": "Do you fix up other artist’s tattoo’s?", "a": "As a rule, no. It’s extremely difficult to fix another person’s work but it really depends on the original tattoo."},
+            {"q": "Can I get two or more tattoos at the same time?", "a": "Absolutely! It all depends on how long you can endure the process."},
+            {"q": "How long does tattoo need to heal", "a": "It varies from person to person. Scabbing can start around the third day or first week and last up to a week or so."},
+            {"q": "Is the ink you use vegan friendly/not tested on animals?", "a": "Yes! I’m a card carrying vegan!"},
+            {"q": "Can I get a tattoo over a scar?", "a": "Yes! If the scar is fully healed (no longer red). Do ask me about this in advance as it also depends on the type of scar."},
+            {"q": "How can I tell why the tattoo scarred or didn’t heal well?", "a": "During the tattoo process you can immediately see if everything is in order - the appearance of the lines, raised lines (the lines should not raise above skin level! But initial swelling and redness is common in many skin types), loads of blood, poor hygiene… In case of poor aftercare the lines will fade quickly, parts will fall out. Exposure to house pets, dust, dirt, etc. can cause an infection and a poor tattoo result."},
+            {"q": "Can I workout after getting a tattoo?", "a": "Please avoid workouts at least 4 to 5 days after getting the tattoo. Excessive sweating might ruin your tattoo."},
+            {"q": "Why does ink sometimes “blow out” under the skin?", "a": ["skin type is prone to this", "tattoo method (the needle went too deep or under the wrong angle)", "skin is the largest organ and it is constantly changing and evolving with you, and so is the ink that you put in it", "It depends on the body part! Skin on your ribs is different from the skin on your legs or your hands..."]},
+            {"q": "Should I cover my new tattoo when showering?", "a": "Yes, but just the first three days. Just wrap it in some plastic foil to avoid soaking in water and contact with shampoo."},
+            {"q": "Can I get a tattoo if I’m breastfeeding?", "a": "It is not recommended!"},
+            {"q": "Should I cover my tattoo for the first few days?", "a": "Yes! You can use plastic foil, especially if you’re exposed to water, or a clean bandage. Generally, create a clean barrier between your new tattoo and your clothes, bed sheets, pets and general environment. :) Other than that, let it breathe as much as possible!"},
+            {"q": "I generally sweat a lot. Have any advice for me?", "a": "Try to avoid tattooing in warmer months and take it easy in the first few days. Afterwards, avoid workouts, biking and other sweat-inducing activities for at least two to three weeks."}
+     ]
     }
 }
