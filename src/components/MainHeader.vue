@@ -139,7 +139,7 @@ export default {
   left: 0;
   background-color: rgba(0, 0, 0, 0.166);
   width: 100%;
-  z-index: 1;
+  z-index: 2;
   position: fixed;
 
   @media (min-width: 1980px) {
@@ -227,7 +227,7 @@ export default {
     position: absolute;
     top: 3.5rem;
     right: 0;
-    z-index: 2;
+    z-index: 1;
     flex-direction: column;
     min-width: fit-content;
 
