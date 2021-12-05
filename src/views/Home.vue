@@ -23,23 +23,25 @@
             v-for="(question, index) in questions"
             :key="question.q"
             class="faq-question"
+            :class="{ active: visibleIndex === index }"
           >
             <h4 @click="showAnswer(index)" class="question">
               {{ question.q }}
             </h4>
 
-            <ul
-              v-if="visibleIndex === index && Array.isArray(question.a)"
-              class="answer"
-            >
-              <li v-for="item in question.a" :key="item" class="answer__part">
-                {{ item }}
-              </li>
-            </ul>
+            
+              <ul
+                v-if="visibleIndex === index && Array.isArray(question.a)"
+                class="answer"
+              >
+                <li v-for="item in question.a" :key="item" class="answer__part">
+                  {{ item }}
+                </li>
+              </ul>
 
-            <p v-else-if="visibleIndex === index" class="answer">
-              {{ question.a }}
-            </p>
+              <p v-else-if="visibleIndex === index" class="answer">
+                {{ question.a }}
+              </p>
           </li>
         </ul>
       </div>
@@ -113,6 +115,11 @@ CForm;
         max-width: 1440px;
         width: 1440px;
       }
+
+      .section-title {
+        font-family: Nunito;
+        font-size: 1.5rem;
+      }
     }
 
     &.image {
@@ -174,29 +181,62 @@ CForm;
           }
 
           .faq-question {
-            cursor: pointer;
+            transition: all 0.2s linear;
 
-            @media (min-width: 1200px) {
-              &:hover {
-                color: $primary-text;
+            &.active {
+              background-color: $main-background;
+              padding: 0 1rem 1.5rem;
+              border-radius: 3px;
+              margin: 1rem 0;
+              color: $light-text;
+
+               @media (min-width: 768px) {
+                  padding: 1rem 2.5rem 2.5rem;
+              }
+
+              .question {
+                &:hover {
+                  color: $light-text;
+                  transform: none;
+                }
               }
             }
 
             .question {
               font-weight: 600;
               padding: 1.5rem 0;
-              line-height: 1.75rem;
+              line-height: 1.5rem;
               font-size: 1.1rem;
+              cursor: pointer;
+              font-family: Nunito;
+              transition: all 0.1s linear;
+
+              @media (min-width: 768px) {
+                font-size: 1.25rem;
+                line-height: 1.75rem;
+              }
+
+              @media (min-width: 1200px) {
+                &:hover {
+                  color: $primary-text;
+                  transform: scale(1.02) translate(8px, 0);
+                }
+              }
             }
 
             .answer {
               width: 100%;
-              line-height: 2rem;
-              margin-bottom: 1.5rem;
+              line-height: 1.75rem;
+              font-size: 0.9rem;
 
               &__part {
                 margin-bottom: 1rem;
                 margin-left: 1.5rem;
+              }
+
+              @media (min-width: 768px) {
+                line-height: 2rem;
+                font-size: 1rem;
               }
             }
           }

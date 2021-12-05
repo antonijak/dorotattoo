@@ -1,65 +1,68 @@
 <template>
-  <header class="main-header">
-    <router-link to="/" class="link main" v-scroll-to="'#image'">
-      <h1 class="link__title">Doro tattoo</h1>
-    </router-link>
+  <transition name="show">
+    <header v-show="!movingDown" class="main-header">
+      <router-link to="/" class="link main" v-scroll-to="'#image'">
+        <h1 class="link__title">Doro tattoo</h1>
+      </router-link>
 
-    <!-------------- O P E N   M O B I L E -------------->
-    <button class="menu-icon" @click="navVisible = !navVisible">
-      <i class="fas fa-bars"></i>
-    </button>
+      <!-------------- O P E N   M O B I L E -------------->
+      <button class="menu-icon" @click="navVisible = !navVisible">
+        <i class="fas fa-bars"></i>
+      </button>
 
-    <!-------------- N A V I G A T I O N -------------->
-    <nav
-      v-if="$route.path === '/'"
-      class="navigation"
-      :class="{ visible: navVisible }"
-      @click="navVisible = false"
-    >
-      <a href="#" v-scroll-to="'#form'" class="link">
-        <p class="link__title">{{ $t("MAIN_HEADER.MSG_GET_FORM") }}</p>
-      </a>
-
-      <a href="#" v-scroll-to="'#faq'" class="link">
-        <p class="link__title">{{ $t("MAIN_HEADER.FAQ") }}</p>
-      </a>
-
-      <div
-        class="link lang"
-        @click="langVisible = !langVisible"
-        @mouseover="langVisible = true"
+      <!-------------- N A V I G A T I O N -------------->
+      <nav
+        v-if="$route.path === '/'"
+        class="navigation"
+        :class="{ visible: navVisible }"
+        @click="navVisible = false"
       >
-        <p class="link__title lang locale">
-          {{ locale }}
-        </p>
+        <a href="#" v-scroll-to="'#form'" class="link">
+          <p class="link__title">{{ $t("MAIN_HEADER.MSG_GET_FORM") }}</p>
+        </a>
 
-        <p
-          v-for="lang in locales.slice(1, locales.length)"
-          :key="lang"
-          class="link__title lang mobile"
-          @click="setLocale(lang)"
-        >
-          {{ lang }}
-        </p>
+        <a href="#" v-scroll-to="'#faq'" class="link">
+          <p class="link__title">{{ $t("MAIN_HEADER.FAQ") }}</p>
+        </a>
 
         <div
-          v-if="langVisible"
-          class="dropdown"
-          @mouseout="langVisible = false"
+          class="link lang"
+          @click="langVisible = !langVisible"
+          @mouseover="langVisible = true"
         >
+          <p class="link__title lang locale">
+            {{ locale }}
+          </p>
+
           <p
             v-for="lang in locales.slice(1, locales.length)"
             :key="lang"
-            class="link__title lang"
+            class="link__title lang mobile"
             @click="setLocale(lang)"
           >
             {{ lang }}
           </p>
-        </div>
-      </div>
-    </nav>
 
-    <!-- <ul class="breadcrumbs">
+          <transition name="fade">
+            <div
+              v-if="langVisible"
+              class="dropdown"
+              @mouseout="langVisible = false"
+            >
+              <p
+                v-for="lang in locales.slice(1, locales.length)"
+                :key="lang"
+                class="link__title lang"
+                @click="setLocale(lang)"
+              >
+                {{ lang }}
+              </p>
+            </div>
+          </transition>
+        </div>
+      </nav>
+
+      <!-- <ul class="breadcrumbs">
       <router-link
         role="list"
         to="/"
@@ -81,7 +84,8 @@
         <i v-if="index < breadcrumbs.length - 1" class="fas fa-chevron-right icon"></i> 
       </router-link> 
     </ul>-->
-  </header>
+    </header>
+  </transition>
 </template>
 
 <script>
@@ -93,6 +97,8 @@ export default {
       navVisible: false,
       locales: ["hr", "en"],
       langVisible: false,
+      scrollTop: 0,
+      movingDown: false,
     };
   },
   mounted() {
@@ -101,6 +107,8 @@ export default {
       this.locales = this.locales.filter((item) => item !== this.locale);
       this.locales.unshift(this.locale);
     }
+
+    document.addEventListener("scroll", this.toggleHeader);
   },
   methods: {
     setLocale(lang) {
@@ -108,6 +116,15 @@ export default {
       this.langVisible = false;
       this.$nextTick();
       localStorage.setItem("doroLANG", this.locale);
+    },
+    toggleHeader() {
+      let position = document.documentElement.scrollTop;
+      let down = position > this.scrollTop && position > 0;
+      this.scrollTop = position;
+      this.movingDown = down;
+      if (down) {
+        this.navVisible = false;
+      }
     },
   },
   watch: {
@@ -130,6 +147,16 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@keyframes growDown {
+  0% {
+    transform: scaleY(0);
+  }
+
+  100% {
+    transform: scaleY(1);
+  }
+}
+
 .main-header {
   padding: 0.75rem 1.5rem;
   display: flex;
@@ -137,7 +164,7 @@ export default {
   align-items: center;
   top: 0;
   left: 0;
-  background-color: rgba(0, 0, 0, 0.166);
+  background-color: rgba(0, 0, 0, 0.2);
   width: 100%;
   z-index: 2;
   position: fixed;
@@ -196,6 +223,7 @@ export default {
       right: -0.75rem;
       background-color: rgba(0, 0, 0, 0.166);
       display: none;
+      animation: growDown 0.1s linear both;
 
       @media (min-width: 1200px) {
         display: block;
@@ -221,24 +249,26 @@ export default {
   }
 
   .navigation {
-    display: flex;
     align-items: center;
-    visibility: hidden;
     position: absolute;
     top: 3.5rem;
     right: 0;
     z-index: 1;
     flex-direction: column;
     min-width: fit-content;
+    display: none;
 
     @media (min-width: 1200px) {
       visibility: visible;
       position: static;
       flex-direction: row;
+      display: flex;
     }
 
     &.visible {
-      visibility: visible;
+      display: flex;
+      animation: growDown 0.1s linear both;
+      transform-origin: top center;
     }
 
     .link {
@@ -287,5 +317,13 @@ export default {
   //       }
   //     }
   //   }
+}
+
+.show-enter-active,
+.show-leave-active {
+  transition: all 0.5s;
+}
+.show-enter, .show-leave-to, .show-leave-active /* .fade-leave-active below version 2.1.8 */ {
+  transform: translate(0, -200px);
 }
 </style>
