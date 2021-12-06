@@ -310,10 +310,13 @@ export default {
       if (step === 4 && this.step3Ready) {
         this.step++;
       }
+
+      this.$scrollTo("#form");
     },
     goBack() {
       this.direction = "slide-left";
       this.step--;
+      this.$scrollTo("#form");
     },
     setErr(info) {
       this.errorMessages[info.field] = info.msg;
@@ -492,8 +495,8 @@ export default {
 
     .buttons {
       width: 100%;
-        display: flex;
-        flex-direction: column-reverse;
+      display: flex;
+      flex-direction: column-reverse;
 
       @media (min-width: 768px) {
         justify-content: flex-end;
@@ -538,13 +541,12 @@ export default {
     align-items: center;
     width: 100%;
     justify-content: center;
-      margin-top: -1rem;
-      z-index: 1;
-  
+    margin-top: -1rem;
+    z-index: 1;
 
     @media (min-width: 768px) {
-          margin-top: 3rem;
-      }
+      margin-top: 3rem;
+    }
 
     .step-indicator {
       height: 5px;
