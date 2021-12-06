@@ -163,7 +163,7 @@ export default {
   align-items: center;
   top: 0;
   left: 0;
-  background-color: rgba(0, 0, 0, 0.2);
+  background-color: $transparent-black;
   width: 100%;
   z-index: 2;
   position: fixed;

@@ -33,12 +33,14 @@
         :err-msg="errorMessages.previous"
       />
 
-      <c-button
-        :text="$t('ANIMATED_FORM.NEXT')"
-        variant="primary"
-        :disabled="!step1Ready"
-        @click="confirmStep(1)"
-      />
+      <div class="buttons">
+        <c-button
+          :text="$t('ANIMATED_FORM.NEXT')"
+          variant="primary"
+          :disabled="!step1Ready"
+          @click="confirmStep(1)"
+        />
+      </div>
     </fieldset>
 
     <!-------------------- S T E P 2 -------------------->
@@ -497,6 +499,8 @@ export default {
       width: 100%;
       display: flex;
       flex-direction: column-reverse;
+      justify-content: center;
+      align-items: center;
 
       @media (min-width: 768px) {
         justify-content: flex-end;

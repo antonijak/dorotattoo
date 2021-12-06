@@ -41,11 +41,11 @@ export default {
   font-size: 0.9rem;
   font-weight: 600;
   transition: all 0.2s linear;
-  width: 100%;
+  width: 80%;
   text-align: center;
 
   &:enabled {
-     cursor: pointer;
+    cursor: pointer;
   }
 
   @media (min-width: 768px) {
@@ -71,8 +71,13 @@ export default {
   }
 
   &.landing {
-    background-color: $main-background;
-    color: $light-text;
+    background-color: rgba(255, 255, 255, 0.096);
+    color: white;
+    width: 70%;
+
+    @media (min-width: 768px) {
+      width: 12rem;
+    }
 
     @media (min-width: 1200px) {
       &:hover:enabled {

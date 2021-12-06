@@ -178,14 +178,12 @@ export default {
       ::v-deep .c-button {
         position: absolute;
         top: 80vh;
-        left: 5%;
-        width: 90%;
+        left: 15%;
         z-index: 1;
 
         @media (min-width: 768px) {
-          left: calc(50% - 5rem);
+          left: calc(50% - 6rem);
           top: 80vh;
-          width: unset;
         }
 
         @media (min-width: 1200px) {
