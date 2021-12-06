@@ -12,14 +12,13 @@
 
       <!-------------- N A V I G A T I O N -------------->
       <nav
-        v-if="$route.path === '/'"
         class="navigation"
         :class="{ visible: navVisible }"
         @click="navVisible = false"
       >
-        <a href="#" v-scroll-to="'#form'" class="link">
+        <div class="link" @click="$emit('showForm')">
           <p class="link__title">{{ $t("MAIN_HEADER.MSG_GET_FORM") }}</p>
-        </a>
+        </div>
 
         <a href="#" v-scroll-to="'#faq'" class="link">
           <p class="link__title">{{ $t("MAIN_HEADER.FAQ") }}</p>
@@ -178,6 +177,7 @@ export default {
     list-style: none;
     color: rgb(230, 230, 230);
     position: relative;
+    cursor: pointer;
 
     &.lang {
       cursor: pointer;

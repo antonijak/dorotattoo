@@ -16,6 +16,11 @@ const routes = [
       // will be used when more pages are added
       breadcrumbs: [{ name: "Home", link: "/" }],
     },
+    children: [
+      {
+        path: "/form",
+      },
+    ],
   },
   {
     path: "*",

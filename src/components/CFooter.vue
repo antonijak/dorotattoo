@@ -2,14 +2,14 @@
   <footer class="c-footer">
     <div class="c-footer__content">
       <!----------------------- N A V I G A T I O N ----------------------->
-      <nav v-if="$route.path === '/'" class="c-footer__navigation">
+      <nav class="c-footer__navigation">
         <router-link to="/" class="footer-link main" v-scroll-to="'#image'">
           <p class="link__title">Doro tattoo</p>
         </router-link>
 
-        <a href="#" v-scroll-to="'#form'" class="footer-link">
+        <div class="footer-link" @click="$emit('showForm')">
           <p class="link__title">{{ $t("FOOTER.MSG_GET_FORM") }}</p>
-        </a>
+        </div>
 
         <a href="#" v-scroll-to="'#faq'" class="footer-link">
           <p class="link__title">{{ $t("FOOTER.FAQ") }}</p>
@@ -96,6 +96,7 @@ export default {
       font-weight: normal;
       padding: 0.25rem;
       min-width: fit-content;
+      cursor: pointer;
 
       @media (min-width: 768px) {
         margin-right: 1.5rem;

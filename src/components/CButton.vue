@@ -70,6 +70,19 @@ export default {
     }
   }
 
+  &.landing {
+    background-color: $main-background;
+    color: $light-text;
+
+    @media (min-width: 1200px) {
+      &:hover:enabled {
+        background-color: $button-primary-hover;
+        border-color: $button-primary-hover;
+        transform: scale(1.05);
+      }
+    }
+  }
+
   @media (min-width: 1200px) {
     &:hover:enabled {
       background-color: $button-secondary-hover;

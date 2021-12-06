@@ -4,10 +4,16 @@
     <section class="home__section image" id="image">
       <img src="../assets/pexels-connor-danylenko-1414535.jpg" class="image" />
       <img src="../assets/symbol.svg" class="logo" />
+
+      <c-button
+        variant="landing"
+        :text="$t('HOME.CONTACT_BUTTON')"
+        @click="$emit('showForm')"
+      />
     </section>
 
     <!---------------- F O R M ---------------->
-    <section class="home__section form" id="form">
+    <section class="home__section form" id="form" v-if="formVisible">
       <div class="home__section__content">
         <!-- <c-form @submitted="showAlert" /> -->
         <animated-form
@@ -56,11 +62,16 @@
 <script>
 // import CForm from "../components/CForm.vue";
 import AnimatedForm from "../components/AnimatedForm.vue";
+import CButton from "../components/CButton.vue";
 export default {
   name: "Home",
   components: {
     // CForm,
     AnimatedForm,
+    CButton,
+  },
+  props: {
+    formVisible: Boolean,
   },
   data() {
     return {
@@ -158,10 +169,28 @@ export default {
         position: absolute;
         height: 20rem;
         width: 20rem;
-        top: calc(50% - 10rem);
+        top: calc(50% - 12rem);
         left: calc(50% - 10rem);
         z-index: 1;
         opacity: 0.8;
+      }
+
+      ::v-deep .c-button {
+        position: absolute;
+        top: 90vh;
+        left: 5%;
+        width: 90%;
+        z-index: 1;
+
+        @media (min-width: 768px) {
+          left: calc(50% - 5rem);
+          top: 80vh;
+          width: unset;
+        }
+
+        @media (min-width: 1200px) {
+          top: calc(50% + 15rem);
+        }
       }
     }
 

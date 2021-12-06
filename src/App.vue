@@ -1,12 +1,16 @@
 <template>
   <div id="app">
-    <main-header />
+    <main-header @showForm="showForm" />
 
     <main class="main">
-      <router-view @alert="showAlert" />
+      <router-view
+        @alert="showAlert"
+        @showForm="showForm"
+        :form-visible="formVisible"
+      />
     </main>
 
-    <c-footer />
+    <c-footer @showForm="showForm" />
 
     <alert
       v-if="alertMessage"
@@ -32,6 +36,7 @@ export default {
     return {
       alertMessage: "",
       alertMode: "",
+      formVisible: false,
     };
   },
   methods: {
@@ -42,6 +47,23 @@ export default {
     closeAlert() {
       this.alertMessage = "";
       this.alertMode = "";
+    },
+    showForm() {
+      this.formVisible = true;
+      this.$nextTick(() => {
+        this.$scrollTo("#form");
+      });
+    },
+  },
+  watch: {
+    $route: {
+      immediate: true,
+      deep: true,
+      handler() {
+        if (this.$route.path === "/form") {
+          this.showForm();
+        }
+      },
     },
   },
 };
