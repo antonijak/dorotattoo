@@ -177,7 +177,7 @@ export default {
 
       ::v-deep .c-button {
         position: absolute;
-        top: 90vh;
+        top: 80vh;
         left: 5%;
         width: 90%;
         z-index: 1;
