@@ -58,5 +58,33 @@
             {"q": "Should I cover my tattoo for the first few days?", "a": "Yes! You can use plastic foil, especially if you’re exposed to water, or a clean bandage. Generally, create a clean barrier between your new tattoo and your clothes, bed sheets, pets and general environment. :) Other than that, let it breathe as much as possible!"},
             {"q": "I generally sweat a lot. Have any advice for me?", "a": "Try to avoid tattooing in warmer months and take it easy in the first few days. Afterwards, avoid workouts, biking and other sweat-inducing activities for at least two to three weeks."}
      ]
+    },
+    "ANIMATED_FORM": {
+        "NEXT": "Next",
+        "BACK": "Back",
+        "SUBTITLE_1": "So, you'd like a tattoo?",
+        "SUBTITLE_2": "Where and how big?",
+        "SUBTITLE_3": "Now for the details...",
+        "SUBTITLE_4": "Your contact info",
+        "SUBTITLE_5": "Tell me more, if you wish...",
+        "YES": "Yes",
+        "NO":"No",
+        "PREVIOUS": "Do you already have a tattoo?",
+        "SIZE": "What is the approximate tattoo size you had in mind?  eg: 10x15cm",
+        "PLACEMENT": "What part of the body would you like to tattoo?",
+        "DETAILS": "Tell me something more about the tattoo you want",
+        "NAME": "What's your name?",
+        "EMAIL": "What's your email?",
+        "INSTAGRAM": "What's your Instagram handle?",
+        "AGE": "How old are you?",
+        "COUNTRY": "Where are you from?",
+        "SEND": "Send",
+        "SUCCESS_MSG": "Contact successfully sent!",
+        "SEND_ANOTHER": "Send another",
+        "ERR_MSG_EMPTY": "Field can't be empty"
+    },
+    "C_INPUT": {
+        "ERR_MSG_EMPTY": "Field can't be empty!",
+        "ERR_MSG_EMAIL": "Please write a valid email address!"
     }
 }

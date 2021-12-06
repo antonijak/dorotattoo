@@ -7,9 +7,14 @@
     </section>
 
     <!---------------- F O R M ---------------->
-    <section class="home__section" id="form">
+    <section class="home__section form" id="form">
       <div class="home__section__content">
-        <c-form @submitted="showAlert" />
+        <!-- <c-form @submitted="showAlert" /> -->
+        <animated-form
+          :key="contactSubmitted"
+          @submitted="showErr"
+          @completed="contactSubmitted++"
+        />
       </div>
     </section>
 
@@ -29,19 +34,18 @@
               {{ question.q }}
             </h4>
 
-            
-              <ul
-                v-if="visibleIndex === index && Array.isArray(question.a)"
-                class="answer"
-              >
-                <li v-for="item in question.a" :key="item" class="answer__part">
-                  {{ item }}
-                </li>
-              </ul>
+            <ul
+              v-if="visibleIndex === index && Array.isArray(question.a)"
+              class="answer"
+            >
+              <li v-for="item in question.a" :key="item" class="answer__part">
+                {{ item }}
+              </li>
+            </ul>
 
-              <p v-else-if="visibleIndex === index" class="answer">
-                {{ question.a }}
-              </p>
+            <p v-else-if="visibleIndex === index" class="answer">
+              {{ question.a }}
+            </p>
           </li>
         </ul>
       </div>
@@ -50,21 +54,34 @@
 </template>
 
 <script>
-import CForm from "../components/CForm.vue";
+// import CForm from "../components/CForm.vue";
+import AnimatedForm from "../components/AnimatedForm.vue";
 export default {
   name: "Home",
   components: {
-    CForm,
+    // CForm,
+    AnimatedForm,
   },
   data() {
     return {
       visibleIndex: null,
+      contactSubmitted: 0,
     };
   },
   methods: {
     showAlert(resSuccess) {
       if (resSuccess === "success") {
         this.$emit("alert", { message: "Contact sent succesfully!" });
+      } else {
+        this.$emit("alert", {
+          message: "Contact sending failed!",
+          mode: "red",
+        });
+      }
+    },
+    showErr(resSuccess) {
+      if (resSuccess === "success") {
+        return;
       } else {
         this.$emit("alert", {
           message: "Contact sending failed!",
@@ -86,7 +103,6 @@ export default {
     },
   },
 };
-CForm;
 </script>
 
 <style scoped lang="scss">
@@ -156,6 +172,24 @@ CForm;
       object-position: bottom center;
     }
 
+    &.form {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      @media (min-height: 812px) {
+        max-height: 100vh;
+      }
+
+      .home__section__content {
+        padding: 0 0.5rem;
+
+        @media (min-width: 1200px) {
+          padding: 0 6rem;
+        }
+      }
+    }
+
     &.faq {
       background-color: $lighter-background;
       color: $primary-text;
@@ -176,6 +210,10 @@ CForm;
           margin-top: 3rem;
           padding: 0 1rem;
 
+          @media (min-width: 768px) {
+            padding: 0 1.5rem;
+          }
+
           @media (min-width: 1200px) {
             padding: 0;
           }
@@ -190,8 +228,8 @@ CForm;
               margin: 1rem 0;
               color: $light-text;
 
-               @media (min-width: 768px) {
-                  padding: 1rem 2.5rem 2.5rem;
+              @media (min-width: 768px) {
+                padding: 1rem 2.5rem 2.5rem;
               }
 
               .question {

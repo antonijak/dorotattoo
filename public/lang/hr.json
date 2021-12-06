@@ -58,5 +58,31 @@
             {"q": "Should I cover my tattoo for the first few days?", "a": "Yes! You can use plastic foil, especially if you’re exposed to water, or a clean bandage. Generally, create a clean barrier between your new tattoo and your clothes, bed sheets, pets and general environment. :) Other than that, let it breathe as much as possible!"},
             {"q": "I generally sweat a lot. Have any advice for me?", "a": "Try to avoid tattooing in warmer months and take it easy in the first few days. Afterwards, avoid workouts, biking and other sweat-inducing activities for at least two to three weeks."}
      ]
+    },
+    "ANIMATED_FORM": {
+        "NEXT": "Dalje",
+        "BACK": "Nazad",
+        "SUBTITLE_1": "Dakle, želiš tetovažu?",
+        "SUBTITLE_2": "Gdje i koliko veliku?",
+        "SUBTITLE_3": "Sad detalji...",
+        "SUBTITLE_4": "Tvoji kontakt podaci",
+        "SUBTITLE_5": "Reci mi vise, ako zelis...",
+        "YES": "Da",
+        "NO":"Ne",
+        "PREVIOUS": "Imaš li već tetovažu?",
+        "SIZE": "Koja je otprilike veličina tetovaže koju želiš? npr. 10x15cm",
+        "PLACEMENT": "Koji dio tijela želiš tetovirati?",
+        "DETAILS": "Opiši tetovažu koju želiš",
+        "NAME": "Kako se zoveš?",
+        "EMAIL": "Tvoj email?",
+        "INSTAGRAM": "Instagram?",
+        "AGE": "Kolko imaš godina?",
+        "COUNTRY": "Otkuda si?",
+        "SEND": "Pošalji",
+        "ERR_MSG_EMPTY": "Polje ne može biti prazno!"
+    },
+    "C_INPUT": {
+        "ERR_MSG_EMPTY": "Polje ne može biti prazno!",
+        "ERR_MSG_EMAIL": "Unesi ispravnu e-mail adresu!"
     }
 }

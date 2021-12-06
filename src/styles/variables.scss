@@ -11,14 +11,17 @@ $error-text: rgb(249, 150, 150);
 $dark-text: rgb(34, 34, 34);
 
 /* BACKGROUND */
-$button-primary: #1B2A41;
+$button-primary: #24354e;
 $button-primary-hover: #2b3c55;
-$button-secondary: rgb(229, 231, 235);
+$button-secondary: #94a771;
+$button-secondary-hover: #c1cea9;
 $main-background:  #31411f;
 $input-background: #3c4b29;
 $input-background-focused: #435230;
 $checkbox-background-focused: #495736;
 $lighter-background: #899a69;
+$form-background: #364523;
+$button-disabled: rgba(255, 255, 255, 0.096);
 
 /* COLORS */
 $light-brown: #d2c6a2;

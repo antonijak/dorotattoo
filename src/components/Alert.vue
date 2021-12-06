@@ -1,7 +1,9 @@
 <template>
   <div class="c-alert">
     <div class="c-alert__content" :class="mode">
-      <i class="fas fa-times icon" @click.stop="$emit('close')"></i>
+      <i class="fas fa-times close" @click.stop="$emit('close')"></i>
+
+      <i v-if="mode === 'red'" class="fas fa-times-circle icon"></i>
 
       <p class="message">{{ message }}</p>
     </div>
@@ -32,14 +34,15 @@ export default {
   align-items: center;
 
   &__content {
-    background: white;
-    color: $primary-text;
+    background: $lighter-background;
+    color: $dark-text;
     position: relative;
     min-height: 8rem;
     width: 95%;
     padding: 3rem;
-    border-radius: 15px;
+    border-radius: 3px;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
 
@@ -49,20 +52,26 @@ export default {
       width: unset;
     }
 
-    .icon {
+    .close {
       position: absolute;
       top: 1.5rem;
       right: 1.5rem;
       cursor: pointer;
-      color: gray;
+      color: $primary-text;
 
       &:hover {
-        color: black;
+        color: $light-text;
       }
     }
 
+    .icon {
+      font-size: 4rem;
+      color: rgb(185, 34, 34);
+      margin-bottom: 1.5rem;
+    }
+
     &.red {
-      border: 2px solid red;
+      color: rgb(94, 0, 0);
     }
   }
 }

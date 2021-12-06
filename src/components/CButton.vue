@@ -31,19 +31,22 @@ export default {
 
 <style lang="scss" scoped>
 .c-button {
-  padding: 0.5rem 1rem;
-  border: 1px solid $button-secondary;
-  background: transparent;
-  color: $button-secondary;
+  padding: 0.75rem 1rem;
+  border: none;
+  background: $button-secondary;
+  color: $primary-text;
   border-radius: 25px;
-  min-width: 9rem;
-  cursor: pointer;
+  min-width: 10rem;
   text-transform: uppercase;
   font-size: 0.9rem;
   font-weight: 600;
   transition: all 0.2s linear;
   width: 100%;
   text-align: center;
+
+  &:enabled {
+     cursor: pointer;
+  }
 
   @media (min-width: 768px) {
     width: unset;
@@ -57,18 +60,27 @@ export default {
     background-color: $button-primary;
     border-color: $button-primary;
     color: $light-text;
+
+    @media (min-width: 1200px) {
+      &:hover:enabled {
+        background-color: $button-primary-hover;
+        border-color: $button-primary-hover;
+        transform: scale(1.05);
+      }
+    }
   }
 
-  &:hover {
-    background-color: $button-primary-hover;
-    border-color: $button-primary-hover;
-    transform: scale(1.05);
+  @media (min-width: 1200px) {
+    &:hover:enabled {
+      background-color: $button-secondary-hover;
+      transform: scale(1.05);
+    }
   }
 
   &:disabled {
     transform: none;
-    background-color: rgb(191, 191, 191);
-    color: rgb(160, 160, 160);
+    background-color: $button-disabled;
+    color: rgba(255, 255, 255, 0.192);
     border-color: rgb(191, 191, 191);
   }
 }

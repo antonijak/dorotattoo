@@ -79,10 +79,17 @@ export default {
     maxLength: Number, // TODO maxlength
     value: [String, Number],
     errMsg: String,
+    validateOnInput: {
+      type: Boolean,
+      default: false,
+    },
   },
   mounted() {
     if (this.focusOnMount) {
       this.focusInput();
+    }
+    if (this.value) {
+      this.userInput = this.value;
     }
   },
   data() {
@@ -103,12 +110,15 @@ export default {
     },
     handleInput() {
       this.$emit("input", this.userInput);
+      if (this.validateOnInput) {
+        this.validateField();
+      }
     },
     validateField() {
       let valid = true;
       // CHECK IF EMPTY
       if (this.required) {
-        this.errorMsg = this.userInput === "" ? "Field can't be empty" : "";
+        this.errorMsg = this.userInput === "" ? this.$t("C_INPUT.ERR_MSG_EMPTY") : "";
       }
 
       // CHECK VALID TYPE
@@ -119,7 +129,7 @@ export default {
         if (valid) {
           this.errorMsg = "";
         } else {
-          this.errorMsg = "Please write valid email";
+          this.errorMsg = this.$t("C_INPUT.ERR_MSG_EMAIL");
         }
       } else if (this.inputType === "text") {
         // TODO input type text validation
@@ -130,6 +140,13 @@ export default {
     errMsg() {
       // set form validation error
       this.errorMsg = this.errMsg;
+    },
+    errorMsg() {
+      if (this.$isTrue(this.errorMsg) && !this.$isTrue(this.errMsg)) {
+        this.$emit("err", { field: this.inputId, msg: this.errorMsg });
+      } else if (!this.$isTrue(this.errorMsg)) {
+        this.$emit("err", { field: this.inputId, msg: this.errorMsg });
+      }
     },
   },
 };
